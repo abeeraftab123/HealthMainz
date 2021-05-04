@@ -1,0 +1,11 @@
+.appointmentCard{
+    height: 250px;
+    width: 200px;
+    background-color: #553066;
+    margin-top: 15px;
+    border-radius: 10px;
+    color:white;
+    font-size: medium;
+    padding:10px;
+    font-weight: 50;
+}

@@ -1,0 +1,357 @@
+body{
+    margin: 0;
+    padding: 0;
+    height: fit-content;
+    width: 100vw;
+    overflow-x: hidden;
+    font-family: 'Poppins' , sans-serif;
+    position: relative;
+}
+
+/* SWEET ALERT */
+
+.swal-button--confirm {
+    background: #75428D;
+}
+
+
+
+/* ########### */
+
+.form{
+    /* padding: 20px; */
+    text-align: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    padding: 0 !important;
+}
+
+.main-div{
+    text-align: center !important;
+    width: 100%;
+}
+
+.headings{
+    width: 80%;
+    margin: auto;
+    text-align: left;
+    height: 50px;
+}
+
+.headings h4{
+    display: inline-block;
+    margin-bottom: 15px;
+    padding-left: 5px;
+    padding-right: 10px;
+    margin-right: 5px;
+    color: rgba(0, 0, 0, 0.4);
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.selected{
+    font-size: 26px !important;
+    color: #75428D !important;
+}
+
+.headings h4:hover{
+    font-size: 26px;
+    color: #75428D;
+}
+
+.login-page, .signUp{
+    width: 100%;
+}
+
+.signUp p, .login-page p{
+    margin: auto;
+    width: 80%;
+    text-align: left;
+    color: red;
+}
+
+#admin-signup, #admin-login{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+#admin-signup:hover, #admin-login:hover{
+    color: #2A0B38;
+}
+
+.form > .logo{
+    position: absolute;
+    top: 20%;
+    width: 80%;
+    height: auto;
+}
+
+input{
+    width: 80%;
+    padding: 8px;
+    font-size: 18px !important;
+    border: 2px solid #75428D;
+    border-radius: 5px;
+    margin-bottom: 10px !important;
+    outline: none;
+    color: #75428D;
+}
+
+input:hover, input:focus{
+    box-shadow: 0px 0px 2px rgb(116, 67, 250);
+}
+
+input::placeholder{
+    color: rgba(140, 97, 255, 0.8);
+    font-size: 18px;
+}
+
+.login-btn, .signup-btn, .okay, .admin-signup-btn, .admin-login-btn{
+    padding: 5px 15px;
+    background-color: #75428D;
+    color: #FFF;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    outline: none;
+    display: block;
+    width: 80%;
+    text-align: center;
+    margin: auto auto;
+    margin-bottom: 10px;
+}
+
+.login-btn:hover, .signup-btn:hover, .okay:hover, .admin-signup-btn:hover, .admin-login-btn:hover{
+    background-color: #2A0B38;
+}
+
+.carousel-section{
+    background-color: #2E0242;
+    height: 100vh;
+    width: 100%;
+    margin: auto auto;
+    position: relative;
+    padding: 0 !important;
+}
+
+.carousel-item{
+    height: 100vh;
+    width: 100%;
+}
+
+img{
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: auto;
+    width: 700px;
+}
+
+.carousel-caption h3{
+    margin-bottom: 30px;
+}
+
+
+.carousel-control-next, .carousel-control-prev{
+    width: 10% !important;
+    margin: 5px !important;
+}
+
+.admin-section{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: #FFF;
+    transform: scale(0);
+    transition: all 150ms linear;
+}
+
+.admin-login{
+    transition: all 150ms linear;
+}
+
+.admin-section.active, .admin-form.active, .admin-login.active{
+    transform: scale(1);
+    z-index: 100;
+}
+
+.okay{
+    width: 300px;
+    margin: 0;
+    /* margin-top: 10px; */
+}
+
+.passcode{
+    padding: 50px;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.passcode i, .admin-login i{
+    position: absolute;
+    font-size: 30px;
+    font-weight: 900;
+    color: rgba(0, 0, 0, 0.4);
+    top: 50px;
+    right: 50px;
+    cursor: pointer;
+}
+
+#passcode{
+    width: 300px;
+}
+
+label[for=passcode]{
+    display: block;
+    color: #2E0242;
+    font-size: 24px;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.admin-form, .admin-login{
+    position: absolute;
+    background-color: #FFF;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: scale(0);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* flex-direction: column; */
+}
+
+.admin-signup-form, .admin-login-form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #75428D;
+}
+
+.admin-signup-form input, .admin-signup-form button, .admin-login-form input, .admin-login-form button{
+    width: 400px;
+}
+
+@media (max-width: 1300px)
+{
+    img{
+        width: 600px;
+        height: auto;
+    }
+}
+
+@media (max-width: 1150px)
+{
+    img{
+        width: 550px;
+        height: auto;
+    }
+}
+
+@media (max-width: 950px)
+{
+    img{
+        width: 500px;
+        height: auto;
+    }
+
+    .carousel-caption h3{
+        margin-bottom: 100px;
+    }
+}
+
+@media (max-width: 950px)
+{
+    img{
+        width: 450px;
+        height: auto;
+    }
+}
+
+@media (max-width: 767px)
+{
+    .form{
+        height: 80vh;
+        justify-content: flex-end;
+    }
+
+    .main-div{
+        margin-bottom: 30px;
+    }
+
+    img{
+        width: 580px;
+        height: auto;
+    }
+
+    .carousel-caption h3{
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 650px)
+{
+    img{
+        height: auto;
+        width: 500px;
+    }
+}
+
+@media (max-width: 550px)
+{
+    img{
+        height: auto;
+        width: 400px;
+    }
+
+    .carousel-caption h3{
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 450px)
+{
+    img{
+        height: auto;
+        width: 300px;
+        margin-top: 30px;
+    }
+
+    .carousel-caption h3{
+        margin-bottom: 75px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 350px)
+{
+    img{
+        height: auto;
+        width: 250px;
+    }
+
+    .carousel-control-next , .carousel-control-prev{
+        margin: 0 !important;
+    }
+
+    .form > h1{
+        font-size: 50px;
+    }
+}

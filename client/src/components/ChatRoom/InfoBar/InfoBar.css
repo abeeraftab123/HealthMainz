@@ -1,0 +1,44 @@
+.infoBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #553066;
+    border-radius: 4px 4px 0 0;
+    height: 45px;
+    width: 100%;
+  }
+  
+  .leftInnerContainer {
+    flex: 0.5;
+    display: flex;
+    align-items: center;
+    margin-left: 5%;
+    color: white;
+  }
+  
+  .rightInnerContainer {
+    display: flex;
+    flex: 0.5;
+    justify-content: flex-end;
+    margin-right: 5%;
+  }
+  
+  .onlineIcon {
+    margin-right: 6px !important;
+    width:10px;
+  }
+
+  .heading1{
+    padding-left: 35px;
+    padding-bottom: 5px;
+    padding-top: 8px;
+    font-size: x-large;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .closeIcon{
+    /* width:15px; */
+    padding-top: 8px;
+    padding-right:20px; 
+  }

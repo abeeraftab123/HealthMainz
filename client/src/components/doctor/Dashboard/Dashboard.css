@@ -1,0 +1,105 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    list-style-type: none;
+    text-decoration: none;
+}
+
+body{
+    background-color: #14001E;
+    color: white;
+}
+
+.wrapper{
+    display:flex;
+    position:relative;
+
+}
+.wrapper .sidebar{
+    position: absolute;
+    width: 80px;
+    height: 100%;
+    background: #553066;
+}
+
+.sidebar{
+    background-color: #2B1038 !important;
+}
+
+.fa-user{
+    color: #FF9B06;
+    size: 10px;
+    padding-left:30px;
+    padding-top: 30px;
+}
+.fa-plus{
+    color:#0085FF;
+    padding-left:30px;
+    padding-top: 30px;
+}
+.fa-robot{
+    color:#EEBA00;
+    padding-left:25px;
+    padding-top: 30px;
+}
+
+.fa-2x {
+    cursor: pointer !important;
+}
+
+.fa-sign-out-alt {
+    color: red;
+    margin: 1.5em 1em -1em 0;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.headZap {    
+    display: flex;
+    justify-content: space-between;
+}
+
+.main_content .header{
+    padding-left: 120px;
+    padding-top: 20px;
+    font-weight: bold;
+    font-size: x-large;
+    font-family: 'Montserrat', sans-serif;
+}
+.user_id{
+    font-size: 1rem;
+    font-weight: 200;
+}
+
+/* .app{grid-area:app;}
+.stats{grid-area:stats;}
+.map{grid-area:map;}
+.graph{grid-area:graph;} */
+
+.grid-container{
+    display:grid;
+    /* grid-template-areas: 
+    'app app app stats stats stats'
+    'map map map graph graph graph'; */
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap:30px;
+    background-color: #14001E;
+    padding: 1em;
+    margin-left: 100px;
+}
+
+.grid-container > div{
+    background-color:#2B1038;
+    padding:1em 1em 0em;
+    color: #85599A;
+    font-size: 1.5rem;;
+    font-weight: 600;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1em;
+}
