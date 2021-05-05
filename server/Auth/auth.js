@@ -43,12 +43,12 @@ app.post("/patient/login",(req,res)=>{
     Patient.findOne({pat_ID:pid},(err,pat)=>{
         if(err) console.log(err)
 
-        if(!pat) return res.status(400).json({msg:"user is not registered"})
+        if(!pat)  res.json({msg:"user is not registered"})
 
         if(pat){
             bcrypt.compare(pass,pat.password)
             .then(isMatch=>{
-                if(!isMatch) return res.status(400).json({msg:"password incorrect"});
+                if(!isMatch)  res.json({msg:"password incorrect"});
                 console.log("patient signed in");
                 jwt.sign(
                     {id:pat._id},
@@ -128,15 +128,7 @@ app.post("/patient/reg",(req,res)=>{
 app.post("/doc/reg",(req,res)=>{
     let doc=req.body;
     Doctor.findOne({Doc_ID:doc.Doc_ID},(err,doctor)=>{
-        console.log(doc)
-        if(err)
-        console.log(err);
-        if(doctor){
-            console.log("Doctor already registered");
-            res.json({
-                data:"true"
-            })
-        }
+        if(doctor) return res.json({msg:"Doctor has already registered"})
         else if(!doctor){
             bcrypt.genSalt(10, function(err, salt) {
                 bcrypt.hash(doc.doc_pass, salt, function(err, hash) {
@@ -182,15 +174,12 @@ app.post("/doc/login",(req,res)=>{
     const doc=req.body
     console.log(doc)
     Doctor.findOne({Doc_ID:doc.ID},(err,doctor)=>{
-        console.log(doctor)
-        if(err) console.log(err)
-
-        if(!doctor) return res.status(400).json({msg:"doctor has not registered"})
-
+        if(doctor===null) return res.json({msg:"doctor has not registered"})
+        if(doctor.Approved===false) return res.json({msg:"doctor account not approved by admin"})
         if(doctor.Approved===true){
             bcrypt.compare(doc.pass,doctor.doc_pass)
             .then(isMatch=>{
-                if(!isMatch) return res.status(400).json({msg:"password incorrect"});
+                if(!isMatch)  return res.json({msg:"password incorrect"});
                 jwt.sign(
                     {id:doctor._id},
                     process.env.JWT_SECRET,

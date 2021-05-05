@@ -9,7 +9,7 @@ function Map(){
     let m=[];
     function map(){   
         const headers = {
-            'Authorization': 'bearer 64f4adc6-da76-47ef-9659-e52e2f1b6ba6'
+            'Authorization': 'bearer 98f64eaf-f471-4ca7-ab2c-e276eaf7317a'
         };
         const url1=`https://cors-anywhere.herokuapp.com/https://atlas.mapmyindia.com/api/places/geocode?address=${address}&itemCount=1`;
         axios.get(url1,{headers})
@@ -38,7 +38,7 @@ function Map(){
     useEffect(()=>{
         console.log(coord)
         const headers = {
-            'Authorization': 'bearer 64f4adc6-da76-47ef-9659-e52e2f1b6ba6'
+            'Authorization': 'bearer 98f64eaf-f471-4ca7-ab2c-e276eaf7317a'
         };
         const url2=`https://cors-anywhere.herokuapp.com/https://atlas.mapmyindia.com/api/places/nearby/json?keywords=pharmacy&refLocation=${coord[0]}%2C${coord[1]}&page=1&region=IND&radius=10000`;
         axios.get(url2,{headers})

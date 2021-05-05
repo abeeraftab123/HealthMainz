@@ -1,4 +1,5 @@
 import React,{useState} from 'react'
+import Notification from "../../Notifications/Notification"
 const axios=require("axios");
 const Register=()=>{
     const [password,setPassword]=useState("");
@@ -10,6 +11,7 @@ const Register=()=>{
     const [email,setEmail]=useState("");
     const [address,setAdd]=useState("");
     const [bg,setBG]=useState("");
+    const [notif,setNotify]=useState({isOpen:false,message:'',type:''})
     const Reg = () => {
         var min = 100;
         var max = 2000;
@@ -25,15 +27,15 @@ const Register=()=>{
                 Address:address,
                 password:password
         }).then((res)=>{
-            console.log(res.data.token)
             if(res.data.token===undefined)
-            alert("patient is already registered");
+            setNotify({isOpen:true,message:'Patient already registered',type:'info'})
             else
-            alert("patient account created");
+            setNotify({isOpen:true,message:'Patient registered',type:'success'})
         })
     };
     return(
         <div>
+            <Notification notif={notif} ></Notification>
             <h1>Register</h1>
                 <input type="text" placeholder="First Name"  onChange={(event)=>{setFname(event.target.value)}} ></input>
                 <br></br>

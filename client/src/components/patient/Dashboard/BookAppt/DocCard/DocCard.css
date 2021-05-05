@@ -1,0 +1,14 @@
+.doctor_available{
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+.av {
+    height: 150px;
+    width: 130px;
+    background-color: #553066;
+    border-radius: 7px;
+    margin-right: 15px;
+    padding:10px;
+}

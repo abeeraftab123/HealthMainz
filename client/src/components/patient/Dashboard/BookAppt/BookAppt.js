@@ -1,77 +1,12 @@
-// import React,{useState,useEffect} from 'react'
-// const axios=require('axios')
-// function BookAppt(){
-//     const user = JSON.parse(localStorage.getItem('profile'));
-//     const [doctors,getDoctor]=useState([])
-//     const [illness,setIllness]=useState("")
-//     const [date,setDate]=useState("")
-//     const [time,setTime]=useState("")
-//     const [doctor,setDoctor]=useState("")
-//     useEffect(()=>{
-//         axios.get('http://localhost:5000/auth/getDoctors')
-//         .then((res)=>{
-//             console.log(res.data.result);
-//             getDoctor([...res.data.result]);
-//         })
-//     },[])
-//     function bookAppt(){
-//         var min = 100;
-//         var max = 2000;
-//         var rand =  min + Math.floor((Math.random() * (max-min)));
-//         let data={
-//             Appt_ID:'APP'+rand.toString(),
-//             pat_id:user.pat_ID,
-//             doc_id:doctor,
-//             illness:illness,
-//             date:date,
-//             time:time,
-//             approved:false
-//         }
-
-//         axios.post("http://localhost:5000/auth/bookAppt",{data})
-//         .then((res)=>{
-//             console.log(res)
-//         })
-//         window.location.reload();
-//     }
-//     return(
-//         <div>
-//             <h1>Book your appointment</h1>
-//             <br></br>
-//             Select illness
-//             <select name="illness" onChange={(event)=>{setIllness(event.target.value)}}>
-//                 <option value="Respiratory">Respiratory</option>
-//                 <option value="Cardiac">Cardiac</option>
-//                 <option value="General">General</option>
-//                 <option value="Gynec">Gynec</option>
-//             </select>
-//             <br></br>
-//             Date
-//             <input type="date" placeholder="select date" onChange={(event)=>{setDate(event.target.value)}}></input>
-//             <br></br>
-//             Time
-//             <input type="time" placeholder="select time" onChange={(event)=>{setTime(event.target.value)}}></input>
-//             <br></br>
-//             Select doctor
-//             <select name="doctor" onChange={(event)=>{setDoctor(event.target.value)}}>
-//                 {doctors.map((doctor)=><option value={doctor.Doc_ID}>{doctor.Doc_Name}</option>)}
-//             </select>
-//             <br></br>
-//             <br></br>
-//             <button onClick={bookAppt}>Book Appointment</button>
-//         </div>
-//     )
-// }
-// export default BookAppt;
-
 import React,{useEffect,useState} from "react"
 import "./BookAppt.css"
 import NavBar from "../../../NavBar/NavBar"
-import DateTimePicker from 'react-datetime-picker';
+import DocCard from "./DocCard/DocCard"
+import Notification from "../../../Notifications/Notification"
 import { LOGOUT } from "../../../../constants/actionTypes";
 import { useDispatch } from 'react-redux';
 import {useHistory} from 'react-router-dom';
-function Dashboard(){
+function BookAppt(){
     const axios=require('axios')
     const dispatch = useDispatch();
     const history = useHistory();
@@ -79,12 +14,42 @@ function Dashboard(){
         dispatch({ type: LOGOUT });
         history.push('/');
     }
+    const user = JSON.parse(localStorage.getItem('profile'));
+    const [doctors,getDoctor]=useState([])
     const [illness,setIllness]=useState("")
     const [date,setDate]=useState("")
     const [time,setTime]=useState("")
-    const [value, onChange] = useState(new Date());
-    
-    const user = JSON.parse(localStorage.getItem('profile'));
+    const [doctor,setDoctor]=useState("")
+    const [notif,setNotify]=useState({isOpen:false,message:'',type:''})
+    useEffect(()=>{
+        axios.get('http://localhost:5000/auth/getDoctors')
+        .then((res)=>{
+            console.log(res.data.result);
+            getDoctor([...res.data.result]);
+        })
+    },[])
+    function bookAppt(){
+        var min = 100;
+        var max = 2000;
+        var rand =  min + Math.floor((Math.random() * (max-min)));
+        let data={
+            Appt_ID:'APP'+rand.toString(),
+            pat_id:user.pat_ID,
+            doc_id:doctor,
+            illness:illness,
+            date:date,
+            time:time,
+            approved:false
+        }
+        console.log(data)
+        axios.post("http://localhost:5000/auth/bookAppt",{data})
+        .then((res)=>{
+        })
+        setNotify({isOpen:true,message:'Appointment booked',type:'success'})
+    }
+    const callBackFunction = (childData) => {
+        setDoctor(childData)
+    }
     return(
         <div className="wrapper">
         <NavBar />
@@ -98,6 +63,7 @@ function Dashboard(){
                 </div>
                 <div class="container">
                     <div class="cont c1">
+                    <Notification notif={notif} ></Notification>
                         <p style = {{marginBottom:"20px"}}><b>Book Your Appointment</b></p>
                         <div class="dropTHEbox">
                             <div class="Illness drop">
@@ -125,15 +91,11 @@ function Dashboard(){
                         </div>
                         <div class="doctor_available">
                             <span class="purpletext">Doctors Available (for the given date and time)</span>
-                            <div class="available_card">
-                                <div class="av a1"></div>
-                                <div class="av a2"></div>
-                                <div class="av a3"></div>
-                            </div>
+                            {doctors.map((doctor,index)=><DocCard id={doctor.Doc_ID} name={doctor.Doc_Name} index={index} callback={callBackFunction}></DocCard>)}
                         </div>
                         <p id="notice">*Fill all the fields before proceeding further</p>
                         <div class="book-beauty">
-                            <div class="book">Book</div> {/*{YASHI MAA WORK} */}
+                            <div class="book" onClick={bookAppt}>Book</div> {/*{YASHI MAA WORK} */}
                         </div>
                     </div>
                     <div class="cont c2">
@@ -157,4 +119,4 @@ function Dashboard(){
     )
 }
 
-export default Dashboard;
+export default BookAppt;

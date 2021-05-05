@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 import Carousel from 'react-bootstrap/Carousel';
+import Notification from "../../Notifications/Notification"
 import { AUTH } from '../../../constants/actionTypes';
 import {useDispatch} from 'react-redux'
 import { useHistory } from 'react-router-dom';
@@ -15,29 +16,33 @@ const Login=()=>{
     const axios=require("axios");
     const [userName,setUserName]=useState("");
     const [password,setPassword]=useState("");
-    //const [password,setPassword]=useState("");
+    const [notif,setNotify]=useState({isOpen:false,message:'',type:''})
     const log = () => {
         axios.post("http://localhost:5000/auth/patient/login",{
             username:userName,
             password:password
         }).then((res)=>{
-            console.log(res.data.patient);
-            dispatch({ type: AUTH, data:res.data.patient });
-            history.push("/dashboard")
+            if(res.data.msg){
+                setNotify({isOpen:true,message:res.data.msg,type:'error'})
+            }
+            else{
+                dispatch({ type: AUTH, data:res.data.patient });
+                history.push("/dashboard")
+            }
         })
     };
     return(
         <>
             <div className="contain">
+            <Notification notif={notif} ></Notification>
                 <div className="join">
                     <div className="log">
                         <img id="logo-t" src={logo}></img>
                         <div className="formz">
-                        
                             <div id="act-inact"><span id="log-act">Login</span><span id="log-inact">Sign Up</span></div>
                             <input id="inpBox" type="text" name="user" placeholder="Patient ID" onChange={(event)=>{setUserName(event.target.value)}} ></input>
                             <input id="inpBox" type="password" name="pass" placeholder="Password" onChange={(event)=>{setPassword(event.target.value)}}></input>
-                            <div className="formBut">
+                            <div className="formBut" onClick={log}>
                                 Login
                             </div>
 
