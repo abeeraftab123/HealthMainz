@@ -335,12 +335,12 @@ app.get("/getAppt",(req,res)=>{
 })
 
 app.post('/confirmAppt',(req,res)=>{
-    const id=(req.body.appt.Appt_ID);
+    const id=(req.body.id);
     Appointment.updateOne({Appt_ID:id},[{$set:{approved:true}}],(err,result)=>{
         if(err) console.log(err)
       })
 
-      Patient.findOne({pat_ID:req.body.appt.pat_id},(err,pat)=>{
+      Patient.findOne({pat_ID:req.body.pid},(err,pat)=>{
         let mail=pat.Email_ID
         let transporter = nodemailer.createTransport({
             host:  "smtp.gmail.com",
@@ -367,12 +367,33 @@ app.post('/confirmAppt',(req,res)=>{
               if (error) {
                   return console.log(error);
               }
-              console.log('Message sent: %s', info.messageId);   
-              console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
               return res.status(200).json({message:"email sent"})
           });
 
     })
+})
+
+app.get("/cAppt",(req,res)=>{
+    let names=[]
+    if(req.query.doc!==undefined){
+        const id=(req.query.doc)
+        Appointment.find({doc_id:id},(err,r)=>{
+            if(err) console.log(err)
+            const cAppt=r.filter(appt=>appt.approved===true);
+            let result=[]
+            cAppt.forEach(async appt=>{
+                try {
+                    const name=await Patient.findOne({pat_ID:appt.pat_id})
+                    let data={...appt._doc,name:name.Pat_Name}
+                    result.push(data)
+                } catch (error) {
+                    
+                }
+               if(result.length===cAppt.length)
+               return res.status(200).json({result:result})
+            })
+        })
+    }
 })
 
 

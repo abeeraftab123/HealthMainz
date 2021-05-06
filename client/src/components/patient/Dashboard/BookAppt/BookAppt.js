@@ -16,7 +16,7 @@ function BookAppt(){
     }
     const user = JSON.parse(localStorage.getItem('profile'));
     const [doctors,getDoctor]=useState([])
-    const [illness,setIllness]=useState("")
+    const [illness,setIllness]=useState("Respiratory")
     const [date,setDate]=useState("")
     const [time,setTime]=useState("")
     const [doctor,setDoctor]=useState("")
@@ -42,9 +42,9 @@ function BookAppt(){
             approved:false
         }
         console.log(data)
-        axios.post("http://localhost:5000/auth/bookAppt",{data})
-        .then((res)=>{
-        })
+        // axios.post("http://localhost:5000/auth/bookAppt",{data})
+        // .then((res)=>{
+        // })
         setNotify({isOpen:true,message:'Appointment booked',type:'success'})
     }
     const callBackFunction = (childData) => {

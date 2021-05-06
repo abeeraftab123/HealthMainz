@@ -5,7 +5,39 @@
     margin-top: 15px;
     border-radius: 10px;
     color:white;
-    font-size: medium;
     padding:10px;
-    font-weight: 50;
+    text-align: center ;
+}
+
+.but{
+    color: white;
+    background-color: #b583ce !important;
+    padding: 3px;
+    border-radius:5px;
+    cursor: pointer;
+    text-align: center;
+    width:100px;
+    height: 30px;
+    margin: auto;
+}
+
+.but:hover{
+    background-color: #1e0a27 !important;
+}
+
+.name{
+    margin-top:15%;
+}
+
+.ill{
+    font-weight: lighter;
+    margin: auto;
+}
+
+.date_time{
+    margin: auto;
+}
+
+.apptID{
+    margin-top:13% ;
 }

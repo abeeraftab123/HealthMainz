@@ -11,9 +11,8 @@ function DocDashboard(){
     const user = JSON.parse(localStorage.getItem('profile'));
 
     const [appts,getAppt]=useState([]);
-
     useEffect(()=>{
-        axios.get('http://localhost:5000/auth/getAppt',{params:{doc:user.Doc_ID}})
+        axios.get('http://localhost:5000/auth/cAppt',{params:{doc:user.Doc_ID}})
         .then((res)=>{
             console.log(res)
             getAppt([...res.data.result])
@@ -39,9 +38,9 @@ function DocDashboard(){
             </div>
             </div>
             <div class="grid-container">
-                <div class="app">Appointment
+                <div class="app">Appointment 
                 <div className="cards">
-                {appts.map((appt)=><AppointmentCard appt={appt}/>)}
+                {appts.map((appt,index)=><AppointmentCard appt={appt} />)}
                 </div>
                 </div>
                 <div class="stats">Statistics</div>

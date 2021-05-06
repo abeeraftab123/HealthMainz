@@ -13,6 +13,7 @@ import AdminDash from "./components/admin/AdminDash"
 import Requests from "./components/admin/Requests/Requests"
 import DocDashboard from "./components/doctor/Dashboard/DocDashboard"
 import BookAppt from "./components/patient/Dashboard/BookAppt/BookAppt"
+import AppointmentReq from "./components/doctor/Dashboard/AppointmentReq/AppointmentReq"
 const App = () =>{
     return(
         <Router>
@@ -27,6 +28,7 @@ const App = () =>{
             <Route path="/doctor/register" component={RegisterDoc} />
             <Route path="/doctor/login" component={LoginDoc} />
             <Route path="/doctor/dashboard" component={DocDashboard} />
+            <Route path="/doctor/apptsReq" component={AppointmentReq} />
 
 
             <Route path="/admin/login" component={AdminLogin} />

@@ -23,6 +23,7 @@ function Notification(props){
                 size="small"
                 onClick={() => {
                   setOpen(false);
+                  window.location.reload();
                 }}
               >
                 <CloseIcon fontSize="inherit" />

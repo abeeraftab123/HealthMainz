@@ -44,6 +44,11 @@ body{
     padding-top: 30px;
 }
 
+.fa-notes-medical{
+    padding-left:30px;
+    padding-top: 30px;
+}
+
 .fa-2x {
     cursor: pointer !important;
 }

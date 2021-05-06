@@ -1,0 +1,33 @@
+.ill{
+    width:50%;
+    background-color: #553066;
+    margin-top: 2%;
+    text-align: center;
+    padding: 5px;
+    border-radius: 7px;
+}
+
+.buttons{
+    display: flex;
+}
+
+.approve{
+    width:25%;
+    background-color: #4E9B29;
+    padding: 5px;
+    text-align: center;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 45%;
+}
+
+.reject{
+    width:25%;
+    background-color: #9B2937;
+    padding: 5px;
+    text-align: center;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 45%;
+    margin-left: 5%;
+}
