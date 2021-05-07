@@ -5,7 +5,7 @@
 
 #map {
     height: 200px !important;
-    width: 650px !important;
+    width: 710px !important;
 }
 
 #addSearch {
@@ -14,8 +14,9 @@
 }
 
 #searchBox {
-    width: 615px;
+    width: 675px;
     height: 35px;
+    font-size:18px;
     background-color: #553066;
     border: none;
     padding: 0.5em;

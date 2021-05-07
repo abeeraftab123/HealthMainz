@@ -1,24 +1,27 @@
 .appointmentCard{
-    height: 250px;
-    width: 200px;
+    height: 230px;
+    width: 180px;
     background-color: #553066;
     margin-top: 15px;
     border-radius: 10px;
     color:white;
     padding:10px;
     text-align: center ;
+    font-size: 65%;
 }
 
 .but{
     color: white;
     background-color: #b583ce !important;
-    padding: 3px;
+    padding: 1px;
+    padding-top: 3.5px;
     border-radius:5px;
     cursor: pointer;
     text-align: center;
     width:100px;
     height: 30px;
     margin: auto;
+    margin-top: 5px;
 }
 
 .but:hover{
@@ -26,7 +29,7 @@
 }
 
 .name{
-    margin-top:15%;
+    margin-top:10%;
 }
 
 .ill{
@@ -39,5 +42,5 @@
 }
 
 .apptID{
-    margin-top:13% ;
+    margin-top:8% ;
 }

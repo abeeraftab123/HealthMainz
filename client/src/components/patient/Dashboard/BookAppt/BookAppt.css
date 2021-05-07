@@ -79,10 +79,10 @@ body{
 .container {
     background-color: #14001E;
     display: grid;
-    grid-template-columns: 1.75fr 1.25fr;
+    grid-template-columns: 27.95fr 15.25fr;
     padding: 1em;
     grid-gap: 2em;
-    padding-left: 120px;
+    padding-left: 0px;
     height: 90%;
     width: 100%;
 }
