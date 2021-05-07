@@ -1,5 +1,12 @@
 import React,{useState} from 'react'
+import Carousel from 'react-bootstrap/Carousel';
 import Notification from "../../Notifications/Notification"
+import { AUTH } from '../../../constants/actionTypes';
+import {useDispatch} from 'react-redux'
+import { useHistory } from 'react-router-dom';
+import logo from "./Auth-public/logo.png";
+
+
 const axios=require("axios");
 const RegisterDoc=()=>{
     const [password,setPassword]=useState("");

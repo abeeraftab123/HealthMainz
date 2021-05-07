@@ -38,7 +38,7 @@ function DocDashboard(){
             </div>
             </div>
             <div class="grid-container">
-                <div class="app">Appointment 
+                <div class="app">Appointments 
                 <div className="cards">
                 {appts.map((appt,index)=><AppointmentCard appt={appt} />)}
                 </div>
