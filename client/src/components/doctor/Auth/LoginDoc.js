@@ -55,7 +55,7 @@ const LoginDoc=()=>{
                 
             </div>
             <div className="features">
-                <div className="feat">
+                <div className="feati">
                 <Carousel>
                     <Carousel.Item>
                         <img
