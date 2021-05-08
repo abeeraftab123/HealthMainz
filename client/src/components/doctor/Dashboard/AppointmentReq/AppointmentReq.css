@@ -11,6 +11,7 @@
 body{
     background-color: #14001E;
     color: white;
+    overflow: hidden;
 }
 
 .wrapper{
@@ -159,6 +160,8 @@ body{
 .purpletext{
     color: #B390C3;
     font-weight: 700;
+    display: flex;
+    flex-direction: column;
 }
 
 .available_card{
@@ -170,7 +173,7 @@ body{
 .doctor_available{
     padding: 1em;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
 
 .av {

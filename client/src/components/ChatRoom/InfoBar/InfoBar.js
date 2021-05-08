@@ -12,7 +12,7 @@ const InfoBar=({room})=>{
                 {room}
                 </h4>
         </div>
-        <div className="rightInnerConatiner">
+        <div style={{marginBottom: "1%"}} className="rightInnerConatiner">
             <a href="/join"><img className="closeIcon" src={closeIcon} alt="close image"></img></a>
         </div>
     </div>

@@ -36,7 +36,7 @@ function Dashboard(){
             </div>
             <div class="grid-container">
                 <div class="app">Appointment
-                <div className="cards">
+                <div className="cardspat">
                 {appts.map((appt)=><AppointmentCard appt={appt}/>)}
                 </div>
                 </div>

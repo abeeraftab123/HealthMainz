@@ -98,7 +98,7 @@ body{
     font-weight: 600;
 }
 
-.cards {
+.cardspat {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 1em;
