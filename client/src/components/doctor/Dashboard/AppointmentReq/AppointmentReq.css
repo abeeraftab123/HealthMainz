@@ -5,7 +5,7 @@
     list-style-type: none;
     text-decoration: none;
     font-family: 'Montserrat', sans-serif;
-   
+    /* overflow: hidden; */
 }
 
 body{
@@ -76,28 +76,33 @@ body{
     font-weight: 200;
 }
 
-.container {
+.containerApp {
     background-color: #14001E;
     display: grid;
-    grid-template-columns: 27.95fr 15.25fr;
+    grid-template-columns: 900px 600px;
+    margin-left: 120px;
     padding: 1em;
     grid-gap: 2em;
     padding-left: 0px;
     height: 90%;
     width: 100%;
+    
 }
 
 .cont {
     background-color: #2B1038;
+    
 }
 
 .cont {
     text-align: left;
     padding: 1.5em 1em 0.5em;
+    
 }
 
 .cont p{
     padding-left: 1em;
+    
 }
 
 

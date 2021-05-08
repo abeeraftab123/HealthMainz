@@ -37,10 +37,10 @@ function AppointmentReq(){
                 <div class="header">{user?user.Doc_Name:null}
                     <div class="user_id">{user?user.Doc_ID:null}</div>                    </div>
                     <div onClick={logout}>
-                            <i class="fas fa-sign-out-alt"></i>
+                            <i style = {{marginLeft:"-100px"}} class="fas fa-sign-out-alt"></i>
                         </div>
                 </div>
-                <div class="container">
+                <div class="containerApp">
                     <div class="cont c1">
                     <p style = {{marginBottom:"20px"}}><b>Appointment Requests</b></p>
                     <p style={{color:"#B390C3"}}>(Click on the appointment to see details)</p>
