@@ -8,15 +8,20 @@ import Login from "./components/patient/Auth/Login"
 import Dashboard from "./components/patient/Dashboard/Dashboard"
 import RegisterDoc from "./components/doctor/Auth/RegisterDoc"
 import LoginDoc from "./components/doctor/Auth/LoginDoc"
-import AdminLogin from "./components/admin/AdminLogin"
-import AdminDash from "./components/admin/AdminDash"
+import AdminLogin from "./components/admin/Auth/AdminLogin"
+import AdminDash from "./components/admin/Dashboard/AdminDash"
 import Requests from "./components/admin/Requests/Requests"
 import DocDashboard from "./components/doctor/Dashboard/DocDashboard"
 import BookAppt from "./components/patient/Dashboard/BookAppt/BookAppt"
 import AppointmentReq from "./components/doctor/Dashboard/AppointmentReq/AppointmentReq"
+// import Landing from "./components/Landing/Landing"
+
+
 const App = () =>{
     return(
         <Router>
+            {/* <Route path="/" component={Landing} /> */}
+
             <Route path="/join" exact component={Join} />
             <Route path="/chat" component={Chat} />
             <Route path="/patient/register" component={Register} />

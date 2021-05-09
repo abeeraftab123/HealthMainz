@@ -82,7 +82,7 @@ body{
 .map{grid-area:map;}
 .graph{grid-area:graph;} */
 
-.grid-container{
+.grid-container-adm{
     display:grid;
     /* grid-template-areas: 
     'app app app stats stats stats'
@@ -95,7 +95,7 @@ body{
     margin-left: 100px;
 }
 
-.grid-container > div{
+.grid-container-adm > div{
     background-color:#2B1038;
     padding:1em 1em 0em;
     color: #85599A;
@@ -109,4 +109,48 @@ body{
     grid-gap: 1em;
 }
 
+.addDoc{
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
 
+.docPic{
+    background: #85599A;
+}
+
+/* .docDetail {
+    display: grid;
+    grid-template-columns:  auto;
+  } */
+
+#inpBoxDoc {
+    width:40%;
+    height:40px;
+    margin-bottom: 20px ;
+    margin-top: 20px ;
+    margin-left: 25px;
+    border: 2.5px solid #75428D;
+    border-radius: 2px;
+    padding: 0.5em;
+    font-size: 1.25rem;
+    float: left;
+    background: #2B1038;
+    color: #75428D;
+}
+
+.addDocBut {
+    background-color: #4E9B29;
+    height: 50px;
+    width:25%;
+    margin-top: 570px;
+    margin-left: 62%;
+    margin-bottom:50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.25rem;
+    font-weight:600;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #fff;
+}

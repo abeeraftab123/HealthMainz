@@ -1,12 +1,14 @@
 import React,{useState} from 'react'
-import { AUTH } from '../../constants/actionTypes';
+import { AUTH } from '../../../constants/actionTypes';
 import {useDispatch} from 'react-redux'
 import { useHistory } from 'react-router-dom';
 import "./AdminLogin.css";
+import logo from "./Auth-public/logo.png";
+import admlogo from "./Auth-public/admlogo.png";
 import Carousel from 'react-bootstrap/Carousel';
-// import user_booking from "./Auth-public/User booking.png";
-// import user_dashboard from "./Auth-public/User Dashboard.png";
-// import user_report from "./Auth-public/User View Report.png";
+import user_booking from "./Auth-public/User booking.png";
+import user_dashboard from "./Auth-public/User Dashboard.png";
+import user_report from "./Auth-public/User View Report.png";
 
 
 
@@ -32,11 +34,13 @@ const AdminLogin=()=>{
         {/* <Notification notif={notif} ></Notification> */}
             <div className="join">
                 <div className="log">
-                    {/* <img id="logo-t" src={logo}></img>
-                    <img id="logo-d" src={doclogo}></img> */}
+                    <img id="logo-t" src={logo}></img>
+                    <img id="logo-d" src={admlogo}></img>
                     
                     <div className="formz">
-                        <div id="act-inact"><span id="log-act">Login</span><span id="log-inact">Sign Up</span></div>
+                        <div id="act-inact"><span id="log-act">Login</span>
+                        {/* <span id="log-inact">Sign Up</span> */}
+                        </div>
                         <input id="inpBox" type="text" name="user" placeholder="Doctor ID" onChange={(event)=>{setUserName(event.target.value)}} ></input>
                         <input id="inpBox" type="password" name="pass" placeholder="Password" onChange={(event)=>{setPassword(event.target.value)}}></input>
                         <div className="formBut" onClick={log}>
@@ -54,7 +58,7 @@ const AdminLogin=()=>{
                     <Carousel.Item>
                         <img
                         className="d-block w-100"
-                        // src={user_booking}
+                        src={user_booking}
                         alt="First slide"
                         />
                         <Carousel.Caption>
@@ -65,7 +69,7 @@ const AdminLogin=()=>{
                     <Carousel.Item>
                         <img
                         className="d-block w-100"
-                        // src={user_report}
+                        src={user_report}
                         alt="Second slide"
                         />
 
@@ -77,7 +81,7 @@ const AdminLogin=()=>{
                     <Carousel.Item>
                         <img
                         className="d-block w-100"
-                        // src={user_dashboard}
+                        src={user_dashboard}
                         alt="Third slide"
                         />
 
