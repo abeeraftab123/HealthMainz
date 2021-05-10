@@ -1,32 +1,56 @@
-import React from "react"
+import React,{useState} from "react"
 import NavBar from "../../NavBar/NavBar"
 import { LOGOUT } from "../../../constants/actionTypes";
 import { useDispatch } from 'react-redux';
 import {useHistory} from 'react-router-dom';
+import Notification from "../../Notifications/Notification"
 import "./AdminDash.css"
 function AdminDash(){
+    const [password,setPassword]=useState("");
+    const [f_name,setFname]=useState("");
+    const [l_name,setLname]=useState("");
+    const [phone,setPhone]=useState("");
+    const [qual,setQual]=useState("");
+    const [email,setEmail]=useState("");
+    const [deptNo,setDept]=useState("");
+    const [notif,setNotify]=useState({isOpen:false,message:'',type:''})
+
     const dispatch = useDispatch();
     const history = useHistory();
     const user = JSON.parse(localStorage.getItem('profile'));
-    console.log(user.Admin_ID);
+    const axios=require('axios')
 
-    function getRequests(){
-        history.push("/admin/req")
-    }
+
     function logout(){
         dispatch({ type: LOGOUT });
-
-    history.push('/');
+        history.push('/');
     }
+
+    const Reg = () => {
+        var min = 100;
+        var max = 2000;
+        var rand =  min + Math.floor((Math.random() * (max-min)));
+        axios.post('http://localhost:5000/auth/doc/reg',{
+                Doc_ID:"DA"+rand.toString(),
+                Doc_Name:f_name+" "+l_name,
+                Doc_email:email,
+                Doc_ph_no:phone,
+                Qualification:qual,
+                Dept_No:deptNo,
+                doc_pass:password,
+                Approved:false
+        }).then((res)=>{
+                console.log(res)
+                setNotify({isOpen:true,message:'Doctor registered',type:'success'})
+        })
+    };
+
     return(
         <div className="wrapper">
         <NavBar />
         <div class="main_content">
             <div class="headZap">
             <div class="header">{user?user.Admin_ID:null}
-            {/* <div className="requests" onClick={getRequests} style={{cursor:"pointer"}}>
-                Requests
-            </div> */}
             </div>
             <br></br>
             <div onClick={logout}>
@@ -35,27 +59,30 @@ function AdminDash(){
             </div>
             <div class="grid-container-adm">
                 <div class="addDoc"><p style = {{marginLeft: "28px"}}>Add Doctors</p>
+                <Notification notif={notif} ></Notification>
                     <div class="docDetail">
-                        <div class="it1"><input id="inpBoxDoc" type="text" placeholder="First Name*"></input></div>
+                        <div class="it1"><input id="inpBoxDoc" type="text" placeholder="First Name*" onChange={(event)=>{setFname(event.target.value)}}></input></div>
                         {/* <br></br> */}
-                        <div class="it1"><input id="inpBoxDoc" type="text" placeholder="Last *"></input></div>
+                        <div class="it1"><input id="inpBoxDoc" type="text" placeholder="Last Name*" onChange={(event)=>{setLname(event.target.value)}}></input></div>
                         {/* <br></br> */}
-                        <div class="it1"><input id="inpBoxDoc" type="email" placeholder="Email ID*"></input></div>
+                        <div class="it1"><input id="inpBoxDoc" type="email" placeholder="Email ID*" onChange={(event)=>{setEmail(event.target.value)}}></input></div>
                         {/* <br></br>  */}
                         {/* <div class="it2"><div id="docPic"></div></div> */}
                         {/* <br></br>  */}
-                        <div class="it1"><input id="inpBoxDoc" type="text" placeholder="Phone Number*"></input></div>
+                        <div class="it1"><input id="inpBoxDoc" type="text" placeholder="Phone Number*" onChange={(event)=>{setPhone(event.target.value)}}></input></div>
                         {/* <br></br> */}
-                        <div class="it1"><input id="inpBoxDoc" type="text" placeholder="Qualification*"></input></div>
+                        <div class="it1"><input id="inpBoxDoc" type="text" placeholder="Qualification*" onChange={(event)=>{setQual(event.target.value)}}></input></div>
                         {/* <br></br> */}
-                        <div class="it1"><input id="inpBoxDoc" type="password" placeholder="Password"></input></div>
+                        <div class="it1"><input id="inpBoxDoc" type="text" placeholder="Department" onChange={(event)=>{setDept(event.target.value)}}></input></div>
                         {/* <br></br> */}
-                        <div class="it1"><input id="inpBoxDoc" type="password" placeholder="Confirm Password*"></input></div>
-                        
-                    </div>
-                    <div className="addDocBut">{/*onClick={log}*/}
+                        <div class="it1"><input id="inpBoxDoc" type="password" placeholder="Password" onChange={(event)=>{setPassword(event.target.value)}}></input></div>
+
+                        <div className="addDocBut" onClick={Reg}>
                             Add Doctor
                         </div>
+                        
+                    </div>
+                    
                 </div> 
 
                 <div class="stats">Statistics</div>

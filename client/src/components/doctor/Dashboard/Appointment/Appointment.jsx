@@ -2,18 +2,18 @@ import React,{useState} from 'react'
 import "./appointment.css";
 import Notification from "../../../Notifications/Notification"
 import { useHistory } from 'react-router-dom';
+import {Link} from 'react-router-dom'
 
 export default function AppointmentCard(props) {
     const history = useHistory();
     const [notif,setNotify]=useState({isOpen:false,message:'',type:''})
     let appt=props.appt;
     function chat(){
-        console.log(appt)
         var today = new Date();
         let currTime = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
         let compareDate=new Date(appt.date)
         if(currTime>=appt.time&&today.setHours(0,0,0,0) == compareDate.setHours(0,0,0,0))
-            history.push("/join")
+            history.push("/join?appID="+appt.Appt_ID)
         else
             setNotify({isOpen:true,message:"Appointment has not started",type:'error'})
     }

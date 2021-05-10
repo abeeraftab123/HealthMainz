@@ -27,7 +27,7 @@ const LoginDoc=()=>{
                 setNotify({isOpen:true,message:res.data.msg,type:'error'})
             }
             else{
-                dispatch({ type: AUTH, data:res.data.doctor });
+                dispatch({ type: AUTH, data:res.data.doctor,user:'doctor' });
                 history.push("/doctor/dashboard")
             }
         })

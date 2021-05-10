@@ -139,8 +139,7 @@ app.post("/doc/reg",(req,res)=>{
                         Doc_email:doc.Doc_email,
                         Qualification:doc.Qualification,
                         Dept_No:doc.Dept_No,
-                        doc_pass:hash,
-                        Approved:false
+                        doc_pass:hash
                     });
                     newDoctor.save((err,doctor)=>{
                         if(err)
@@ -161,6 +160,35 @@ app.post("/doc/reg",(req,res)=>{
                                     })
                                 }
                             )
+                            let transporter = nodemailer.createTransport({
+                                host:  "smtp.gmail.com",
+                                port: 587,
+                                secure: false, 
+                                auth: {
+                                    user: 'healthmainz@gmail.com', 
+                                    pass: process.env.mail_pass  
+                                },
+                                tls:{
+                                  rejectUnauthorized:false
+                                }
+                              });
+                            
+                              let mailOptions = {
+                                  from: '"HealthMainz" <healthmainz@gmail.com>', 
+                                  to: doctor.Doc_email, 
+                                  subject: 'Account Created', 
+                                  text: 'Hello world?', 
+                                  html: "Greetings "+doctor.Doc_Name+" your account has been created.<br></br> Your ID is:"+doctor.Doc_ID+" and password:"+doc.doc_pass 
+                              };
+                            
+                              transporter.sendMail(mailOptions, (error, info) => {
+                                  if (error) {
+                                      return console.log(error);
+                                  }
+                                  console.log('Message sent: %s', info.messageId);   
+                                  console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+                                  return res.status(200).json({message:"email sent"})
+                              });
                         }
                     })
                 });
@@ -174,9 +202,8 @@ app.post("/doc/login",(req,res)=>{
     const doc=req.body
     console.log(doc)
     Doctor.findOne({Doc_ID:doc.ID},(err,doctor)=>{
-        if(doctor===null) return res.json({msg:"doctor has not registered"})
-        if(doctor.Approved===false) return res.json({msg:"doctor account not approved by admin"})
-        if(doctor.Approved===true){
+        if(doctor===null) return res.json({msg:"Admin has not registered this account"})
+        else{
             bcrypt.compare(doc.pass,doctor.doc_pass)
             .then(isMatch=>{
                 if(!isMatch)  return res.json({msg:"password incorrect"});
@@ -233,64 +260,12 @@ app.post("/admin/login",(req,res)=>{
     })
 })
 
-app.post("/admin/requests",(req,res)=>{
-    Doctor.find({},(err,requests)=>{
-        console.log(requests)
-        if(err) console.log(err)
-        if(!requests) return res.json({message:"no requests"})
-        res.json({requests:requests})
-    })
-})
-
-app.post("/admin/approve",(req,res)=>{
-    Doctor.updateOne({Doc_ID:req.body.ID},[{$set:{Approved:true}}],(err,result)=>{
-        if(err) console.log(err)
-      })
-        
-    
-
-    Doctor.findOne({Doc_ID:req.body.ID},(err,doc)=>{
-        let mail=doc.Doc_email
-        console.log(mail)
-        let transporter = nodemailer.createTransport({
-            host:  "smtp.gmail.com",
-            port: 587,
-            secure: false, 
-            auth: {
-                user: 'healthmainz@gmail.com', 
-                pass: process.env.mail_pass  
-            },
-            tls:{
-              rejectUnauthorized:false
-            }
-          });
-        
-          let mailOptions = {
-              from: '"HealthMainz" <healthmainz@gmail.com>', 
-              to: mail, 
-              subject: 'Account Approved', 
-              text: 'Hello world?', 
-              html: "Greetings "+doc.Doc_Name+" your account has been approved and your ID is:"+doc.Doc_ID 
-          };
-        
-          transporter.sendMail(mailOptions, (error, info) => {
-              if (error) {
-                  return console.log(error);
-              }
-              console.log('Message sent: %s', info.messageId);   
-              console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
-              return res.status(200).json({message:"email sent"})
-          });
-
-    })
-})
 
 app.get("/getDoctors",(req,res)=>{
     let ans=[];
     Doctor.find({},(err,results)=>{
         if(err) console.log(err)
         results.forEach(r=>{
-            if(r.Approved===true)
             ans.push(r);
         })
         res.json({result:ans});

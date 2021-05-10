@@ -11,7 +11,7 @@ function Dashboard(){
     const dispatch = useDispatch();
     const history = useHistory();
     function logout(){
-        dispatch({ type: LOGOUT });
+        dispatch({ type: LOGOUT,user:"patient" });
         history.push('/');
     }
     const[appts,getAppt]=useState([])
@@ -21,10 +21,11 @@ function Dashboard(){
             getAppt([...res.data.result])
         })
     },[])
-    const user = JSON.parse(localStorage.getItem('profile'));
+    const user = JSON.parse(localStorage.getItem('patient'));
+    console.log(user)
     return(
         <div className="wrapper">
-        <NavBar />
+        <NavBar user="patient"/>
         <div class="main_content">
             <div class="headZap">
             <div class="header">{user?user.Pat_Name:null}
