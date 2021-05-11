@@ -18,7 +18,7 @@ export default function AppointmentCard(props) {
             setNotify({isOpen:true,message:"Appointment not scheduled today",type:'error'})
         else if(currTime<appt.time)
             setNotify({isOpen:true,message:"Appointment has not started",type:'error'})
-        else if(hourDiff!==0||minDiff>15)
+        else if(minDiff>15||hourDiff!==0)
             setNotify({isOpen:true,message:"Appointment Missed",type:'error'})
         else
             history.push("/join?appID="+appt.Appt_ID)

@@ -21,10 +21,10 @@ function NavBar(props){
     }
     function profile(){
         if(user==="patient"){
-            history.push("/patient/PatProfile")
+            history.push("/patient/profile")
         }
         else if(user==="doctor"){
-            history.push("/doctor/DocProfile")
+            history.push("/doctor/profile")
         }
     }
     return(
