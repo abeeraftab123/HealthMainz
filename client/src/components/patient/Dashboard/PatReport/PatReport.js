@@ -61,56 +61,45 @@ function BookAppt(){
                             <i class="fas fa-sign-out-alt"></i>
                         </div>
                 </div>
-                <div class="containerBook">
-                    <div class="cont c1">
-                    <Notification notif={notif} ></Notification>
-                        <p style = {{marginBottom:"20px"}}><b>Book Your Appointment</b></p>
-                        <div class="dropTHEbox">
-                            <div class="Illness drop">
-                                <span class="purpletext">Type of Illness</span>
-                                {/* <select name="illness" id="illdrop" onChange={(event)=>{setIllness(event.target.value)}}>  
-                                    <option value="Respiratory">Respiratory</option>
-                                    <option value="Cardiac">Cardiac</option>
-                                    <option value="General">General</option>
-                                    <option value="Gynec">Gynec</option>
-                                </select> */}
-                            </div>
-                            <div class="DateTime drop">
-                                <span class="purpletext">Select Date and Time</span>
-                                {/* <DateTimePicker class="DateTimePicker"
-                                    onChange={onChange}
-                                    value={value}
-                                /> */}
-                                {/* <input type="date" placeholder="select date" id="illdrop" onChange={(event)=>{setDate(event.target.value)}}></input>
-                                <input type="time" placeholder="select time" id="illdrop" onChange={(event)=>{setTime(event.target.value)}}></input>  */}
-                            </div>
+                <div class="containerPatRep">
+                    <div class="contc1">
+                    <div class="scrollbar">
+				        <div class="force-overflow"></div>
+			        </div>
+
+                    <p><b>View Appointment Reports</b></p>
+                        <div class = "app_grid">
+                            <div class="app_view d1"></div>
+                            <div class="app_view d2"></div>
+                            <div class="app_view d3"></div>
+                            <div class="app_view d4"></div>
+                            <div class="app_view d5"></div>
+                            <div class="app_view d6"></div>
+                            <div class="app_view d7"></div>
+                            <div class="app_view d8"></div>
+                            <div class="app_view d9"></div>
+                           
                         </div>
-                        <div class="symptoms">
-                            <span class="purpletext">Symptoms (State if any)</span>
-                            <textarea type="text" placeholder="Type your symptoms here." class="symptom-box" rows="5" cols="50"></textarea>
-                        </div>
-                        <span style={{marginLeft: "15px", marginBottom: "-15px"}} class="purpletext">Doctors Available (for the given date and time)</span>
-                        {/* <div class="doctor_available">
-                            {doctors.map((doctor,index)=><DocCard id={doctor.Doc_ID} name={doctor.Doc_Name} index={index} callback={callBackFunction}></DocCard>)}
-                        </div> */}
-                        <p id="notice">*Fill all the fields before proceeding further</p>
-                        {/* <div class="book-beauty">
-                            <div class="book" onClick={bookAppt}>Book</div> 
-                        </div> */}
                     </div>
                     <div class="cont c2">
-                        <p><b>Seek Specialist Help, Our Doctors</b></p>
-                        <div class = "doc_grid">
-                            <div class="doc d1"></div>
-                            <div class="doc d2"></div>
-                            <div class="doc d3"></div>
-                            <div class="doc d4"></div>
-                            <div class="doc d5"></div>
-                            <div class="doc d6"></div>
-                            <div class="doc d7"></div>
-                            <div class="doc d8"></div>
-                            <div class="doc d9"></div>
+                    <Notification notif={notif} ></Notification>
+                        <p style = {{marginBottom:"20px"}}><b>Appointment Report</b></p>
+                        <div class="dropTHEbox">
+                            <div class="Illness drop">
+                                <span class="purpletext">Appointment ID: </span>
+                                <span class="purpletext">Appointment Date: </span>
+                                <span class="purpletext">Appointment Time: </span>
+                                <br></br>
+                                <span class="purpletext">Doctor: </span>
+                                <span class="purpletext">Patient: </span>
+                            </div>
+                            
                         </div>
+                        <div class="symptoms">
+                            <span class="purpletext">Doctor Feedback:</span>
+                            <textarea type="text" class="symptom-box" rows="5" cols="50"></textarea>
+                        </div>
+                       
                     </div>
                 </div>
                 </div>
