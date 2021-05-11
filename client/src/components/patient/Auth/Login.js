@@ -26,7 +26,7 @@ const Login=()=>{
                 setNotify({isOpen:true,message:res.data.msg,type:'error'})
             }
             else{
-                dispatch({ type: AUTH, data:res.data.patient });
+                dispatch({ type: AUTH, data:res.data.patient ,user:'patient'});
                 history.push("/dashboard")
             }
         })

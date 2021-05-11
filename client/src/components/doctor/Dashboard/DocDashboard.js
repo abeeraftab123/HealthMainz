@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 import {useHistory} from 'react-router-dom';
 const axios=require('axios');
 function DocDashboard(){
-    const user = JSON.parse(localStorage.getItem('profile'));
+    const user = JSON.parse(localStorage.getItem('doctor'));
 
     const [appts,getAppt]=useState([]);
     useEffect(()=>{
@@ -22,12 +22,12 @@ function DocDashboard(){
     const dispatch = useDispatch();
     const history = useHistory();
     function logout(){
-        dispatch({ type: LOGOUT });
+        dispatch({ type: LOGOUT ,user:'doctor'});
         history.push('/');
     }
     return(
         <div className="wrapper">
-        <NavBar />
+        <NavBar user="doctor"/>
         <div class="main_content">
             <div class="headZap">
             <div class="header">{user?user.Doc_Name:null}

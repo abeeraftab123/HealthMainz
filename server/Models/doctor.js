@@ -6,7 +6,6 @@ const doctor=new mongoose.Schema({
     Doc_email:String,
     Qualification:String,
     Dept_No:String,
-    doc_pass:String,
-    Approved:Boolean
+    doc_pass:String
 });
 module.exports=mongoose.model("Doctor",doctor);

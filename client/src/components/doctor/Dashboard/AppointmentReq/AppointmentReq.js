@@ -22,16 +22,16 @@ function AppointmentReq(){
         })
     },[])
     function logout(){
-        dispatch({ type: LOGOUT });
+        dispatch({ type: LOGOUT,user:"doctor" });
         history.push('/');
     }
     let callback = (childData) =>{
         setDetail({show:true,illness:childData.illness,time:childData.time,date:childData.date,id:childData.Appt_ID,pid:childData.pat_id})
     }
-    const user = JSON.parse(localStorage.getItem('profile'));
+    const user = JSON.parse(localStorage.getItem('doctor'));
     return (
         <div className="wrapper">
-        <NavBar />
+        <NavBar user="doctor"/>
         <div class="main_content">
             <div class="headZap">
                 <div class="header">{user?user.Doc_Name:null}

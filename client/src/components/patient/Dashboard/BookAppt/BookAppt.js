@@ -11,10 +11,10 @@ function BookAppt(){
     const dispatch = useDispatch();
     const history = useHistory();
     function logout(){
-        dispatch({ type: LOGOUT });
+        dispatch({ type: LOGOUT,user:"patient" });
         history.push('/');
     }
-    const user = JSON.parse(localStorage.getItem('profile'));
+    const user = JSON.parse(localStorage.getItem('patient'));
     const [doctors,getDoctor]=useState([])
     const [illness,setIllness]=useState("Respiratory")
     const [date,setDate]=useState("")
@@ -42,9 +42,9 @@ function BookAppt(){
             approved:false
         }
         console.log(data)
-        // axios.post("http://localhost:5000/auth/bookAppt",{data})
-        // .then((res)=>{
-        // })
+        axios.post("http://localhost:5000/auth/bookAppt",{data})
+        .then((res)=>{
+        })
         setNotify({isOpen:true,message:'Appointment booked',type:'success'})
     }
     const callBackFunction = (childData) => {
@@ -52,7 +52,7 @@ function BookAppt(){
     }
     return(
         <div className="wrapper">
-        <NavBar />
+        <NavBar user="patient"/>
         <div class="main_content">
             <div class="headZap">
                 <div class="header">{user?user.Pat_Name:null}

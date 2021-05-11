@@ -21,7 +21,7 @@ function MyVerticallyCenteredModal(props) {
         </Modal.Header>
         <Modal.Body>
           <h4 style={{color: '#76418E', textAlign: 'center',}}>
-            Your UserID is 193423
+            Your Patient ID is {props.id}
           </h4>
         </Modal.Body>
         <Modal.Footer style={{alignItems: 'center'}}>
@@ -46,12 +46,14 @@ const Register=()=>{
     const [address,setAdd]=useState("");
     const [bg,setBG]=useState("");
     const [notif,setNotify]=useState({isOpen:false,message:'',type:''})
+    const [id,setID]=useState('');
     const Reg = () => {
         var min = 100;
         var max = 2000;
         var rand =  min + Math.floor((Math.random() * (max-min)));
+        const PID="PA"+rand.toString()
         axios.post('http://localhost:5000/auth/patient/reg',{
-                pat_ID:"PA"+rand.toString(),
+                pat_ID:PID,
                 Pat_Name:f_name+" "+l_name,
                 DOB:dob,
                 Phone_No:phone,
@@ -63,8 +65,11 @@ const Register=()=>{
         }).then((res)=>{
             if(res.data.token===undefined)
             setNotify({isOpen:true,message:'Patient already registered',type:'info'})
-            else
-            setNotify({isOpen:true,message:'Patient registered',type:'success'})
+            else{
+              setModalShow(true)
+              setID(PID)
+            }
+            //setNotify({isOpen:true,message:'Patient registered',type:'success'})
         })
     };
     return(
@@ -109,12 +114,13 @@ const Register=()=>{
                         <input id="inpBoxfirstname" type="text" placeholder="Phone number*"  onChange={(event)=>{setPhone(event.target.value)}}></input>
                         {/* <br></br> */}
                         <div class="mark">*Marked fields are mandatory</div>
-                        <div className="signBut" onClick={Reg} onClick={() => setModalShow(true)}>Sign Up</div>
+                        <div className="signBut" onClick={Reg} >Sign Up</div>
                         {/* <button type="submit" onClick={Reg}>Register</button> */}
                        
                         <MyVerticallyCenteredModal
                             show={modalShow}
                             onHide={() => setModalShow(false)}
+                            id={id}
                         />
                         
                     </div>

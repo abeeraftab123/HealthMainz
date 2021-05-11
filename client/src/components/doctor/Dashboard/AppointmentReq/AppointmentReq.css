@@ -11,7 +11,7 @@
 body{
     background-color: #14001E;
     color: white;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .wrapper{

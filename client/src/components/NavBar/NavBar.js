@@ -1,14 +1,15 @@
 import React from "react"
 import {useHistory} from 'react-router-dom';
 import "./NavBar.css"
-function NavBar(){
+function NavBar(props){
     const history = useHistory();
-    const user = JSON.parse(localStorage.getItem('profile'));
+   const user=props.user;
+
     function addAppt(){
-        if(user.pat_ID!==undefined){
+        if(user==="patient"){
             history.push("/patient/bookAppt")
         }
-        else if(user.Doc_ID!==undefined){
+        else if(user==="doctor"){
             console.log("doctor signed in")
         }
         else{
@@ -18,13 +19,21 @@ function NavBar(){
     function viewAppts(){
         history.push("/doctor/apptsReq")
     }
+    function profile(){
+        if(user==="patient"){
+            history.push("/patient/profile")
+        }
+        else if(user==="doctor"){
+            history.push("/doctor/profile")
+        }
+    }
     return(
         <div class="sidebar">
             <ul>
-                <li><i class="far fa-user fa-2x"></i></li>
+                <li><i class="far fa-user fa-2x" onClick={profile}></i></li>
                 <li><i class="fas fa-plus fa-2x" onClick={addAppt}></i></li>
                 <li><i class="fas fa-robot fa-2x"></i></li>
-                {user.Doc_ID!==undefined?<li><i class="fas fa-notes-medical fa-2x" onClick={viewAppts}></i></li>:null}
+                {user==="doctor"?<li><i class="fas fa-notes-medical fa-2x" onClick={viewAppts}></i></li>:null}
             </ul>
         </div>
     )

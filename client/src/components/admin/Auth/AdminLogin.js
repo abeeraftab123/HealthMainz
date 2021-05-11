@@ -39,7 +39,6 @@ const AdminLogin=()=>{
                     
                     <div className="formz">
                         <div id="act-inact"><span id="log-act">Login</span>
-                        {/* <span id="log-inact">Sign Up</span> */}
                         </div>
                         <input id="inpBox" type="text" name="user" placeholder="Doctor ID" onChange={(event)=>{setUserName(event.target.value)}} ></input>
                         <input id="inpBox" type="password" name="pass" placeholder="Password" onChange={(event)=>{setPassword(event.target.value)}}></input>
