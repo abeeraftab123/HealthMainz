@@ -1,5 +1,24 @@
 # HealthMainz
 
+## Start Instructions
+
+To run the react app: 
+
+### Client Side:
+
+```
+cd client
+npm install
+npm start
+```
+### Server Side:
+
+```
+cd server
+npm install
+npm start
+```
+
 ## Screens
 
 ![User Login.png](https://images.zenhubusercontent.com/6096fbff75c041832469625d/36811b45-dff7-44d4-8cd2-f5aa0423bffe)
