@@ -49,6 +49,12 @@ body{
     padding-top: 30px;
 }
 
+.fa-tasks{
+    color:#3beb75;
+    padding-left:25px;
+    padding-top: 30px;
+}
+
 .fa-2x {
     cursor: pointer !important;
 }
@@ -124,13 +130,13 @@ body{
   } */
 
 #inpBoxDoc {
-    width:40%;
-    height:40px;
-    margin-bottom: 20px ;
+    width:90%;
+    height:50px;
+    margin-bottom: 10px ;
     margin-top: 20px ;
     margin-left: 25px;
     border: 2.5px solid #75428D;
-    border-radius: 2px;
+    border-radius: 0px;
     padding: 0.5em;
     font-size: 1.25rem;
     float: left;
@@ -142,10 +148,10 @@ body{
     background-color: #4E9B29;
     height: 50px;
     width:25%;
-    margin-top: 570px;
-    margin-left: 62%;
-    margin-bottom:50px;
-    display: flex;
+    margin-top: 540px;
+    margin-left: 68%;
+    margin-bottom:30px;
+    display: grid;
     justify-content: center;
     align-items: center;
     font-size: 1.25rem;

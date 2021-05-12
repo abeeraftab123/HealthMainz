@@ -1,66 +1,37 @@
-import React,{useEffect,useState} from "react"
-import "./PatReport.css"
-import NavBar from "../../../NavBar/NavBar"
-//import DocCard from "./DocCard/DocCard"
-import Notification from "../../../Notifications/Notification"
-import { LOGOUT } from "../../../../constants/actionTypes";
+import React,{useState} from "react"
+import NavBar from "../../NavBar/NavBar"
+import { LOGOUT } from "../../../constants/actionTypes";
 import { useDispatch } from 'react-redux';
 import {useHistory} from 'react-router-dom';
-function PatReport(){
-    const axios=require('axios')
+import Notification from "../../Notifications/Notification"
+import "./AdmReport.css"
+function AdmReport(){
+    
+    const [notif,setNotify]=useState({isOpen:false,message:'',type:''})
+
     const dispatch = useDispatch();
     const history = useHistory();
+    const user = JSON.parse(localStorage.getItem('profile'));
+    const axios=require('axios')
+
+
     function logout(){
         dispatch({ type: LOGOUT });
         history.push('/');
     }
-     const user = JSON.parse(localStorage.getItem('profile'));
-    // const [doctors,getDoctor]=useState([])
-    // const [illness,setIllness]=useState("Respiratory")
-    // const [date,setDate]=useState("")
-    // const [time,setTime]=useState("")
-    // const [doctor,setDoctor]=useState("")
-     const [notif,setNotify]=useState({isOpen:false,message:'',type:''})
-    useEffect(()=>{
-        axios.get('http://localhost:5000/auth/getDoctors')
-        .then((res)=>{
-            console.log(res.data.result);
-            //getDoctor([...res.data.result]);
-        })
-    },[])
-    // function bookAppt(){
-    //     var min = 100;
-    //     var max = 2000;
-    //     var rand =  min + Math.floor((Math.random() * (max-min)));
-    //     let data={
-    //         Appt_ID:'APP'+rand.toString(),
-    //         pat_id:user.pat_ID,
-    //         doc_id:doctor,
-    //         illness:illness,
-    //         date:date,
-    //         time:time,
-    //         approved:false
-    //     }
-    //     console.log(data)
-    //     // axios.post("http://localhost:5000/auth/bookAppt",{data})
-    //     // .then((res)=>{
-    //     // })
-    //     setNotify({isOpen:true,message:'Appointment booked',type:'success'})
-    // }
-    // const callBackFunction = (childData) => {
-    //     setDoctor(childData)
-    // }
+
+    
     return(
         <div className="wrapper">
         <NavBar />
         <div class="main_content">
             <div class="headZap">
-                <div class="header">{user?user.Pat_Name:null}
-                    <div class="user_id">{user?user.pat_ID:null}</div>                    </div>
-                    <div onClick={logout}>
-                            <i class="fas fa-sign-out-alt"></i>
-                        </div>
+                <div class="header">{user?user.Admin_ID:null}</div>
+                <br></br>
+                <div onClick={logout}>
+                <i class="fas fa-sign-out-alt"></i>
                 </div>
+            </div>
                 <div class="containerPatRep">
                     <div class="contc1">
                     <div class="scrollbar">
@@ -108,4 +79,4 @@ function PatReport(){
     )
 }
 
-export default PatReport;
+export default AdmReport;

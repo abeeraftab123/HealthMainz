@@ -10,6 +10,7 @@ import LoginDoc from "./components/doctor/Auth/LoginDoc"
 import AdminLogin from "./components/admin/Auth/AdminLogin"
 import AdminDash from "./components/admin/Dashboard/AdminDash"
 import Requests from "./components/admin/Requests/Requests"
+import AdmReport from "./components/admin/AdmReport/AdmReport"
 import DocDashboard from "./components/doctor/Dashboard/DocDashboard"
 import BookAppt from "./components/patient/Dashboard/BookAppt/BookAppt"
 import AppointmentReq from "./components/doctor/Dashboard/AppointmentReq/AppointmentReq"
@@ -43,6 +44,7 @@ const App = () =>{
             <Route path="/admin/login" component={AdminLogin} />
             <Route path="/admin/dashboard" component={AdminDash} />
             <Route path="/admin/req" component={Requests} />
+            <Route path="/admin/report" component={AdmReport} />
         </Router>
     )
 }

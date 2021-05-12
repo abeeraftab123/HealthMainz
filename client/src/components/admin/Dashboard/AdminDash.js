@@ -50,12 +50,11 @@ function AdminDash(){
         <NavBar />
         <div class="main_content">
             <div class="headZap">
-            <div class="header">{user?user.Admin_ID:null}
-            </div>
-            <br></br>
-            <div onClick={logout}>
-            <i class="fas fa-sign-out-alt"></i>
-            </div>
+                <div class="header">{user?user.Admin_ID:null}</div>
+                <br></br>
+                <div onClick={logout}>
+                <i class="fas fa-sign-out-alt"></i>
+                </div>
             </div>
             <div class="grid-container-adm">
                 <div class="addDoc"><p style = {{marginLeft: "28px"}}>Add Doctors</p>
@@ -76,7 +75,7 @@ function AdminDash(){
                         <div class="it1"><input id="inpBoxDoc" type="text" placeholder="Department" onChange={(event)=>{setDept(event.target.value)}}></input></div>
                         {/* <br></br> */}
                         <div class="it1"><input id="inpBoxDoc" type="password" placeholder="Password" onChange={(event)=>{setPassword(event.target.value)}}></input></div>
-
+                        <br></br>
                         <div className="addDocBut" onClick={Reg}>
                             Add Doctor
                         </div>
