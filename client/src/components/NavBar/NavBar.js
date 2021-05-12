@@ -34,6 +34,7 @@ function NavBar(props){
                 <li><i class="fas fa-plus fa-2x" onClick={addAppt}></i></li>
                 <li><i class="fas fa-robot fa-2x"></i></li>
                 {user==="doctor"?<li><i class="fas fa-notes-medical fa-2x" onClick={viewAppts}></i></li>:null}
+                {user==="patient"?<li><i class="fas fa-tasks fa-2x" onClick={viewAppts}></i></li>:null} 
             </ul>
         </div>
     )
