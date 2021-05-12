@@ -17,7 +17,12 @@ function NavBar(props){
         }
     }
     function viewAppts(){
+        if(user==="doctor")
         history.push("/doctor/apptsReq")
+        else if(user==="patient")
+        history.push("/patient/report")
+        else if (user==="admin")
+        history.push("/admin/report")
     }
     function profile(){
         if(user==="patient"){
@@ -34,7 +39,7 @@ function NavBar(props){
                 <li><i class="fas fa-plus fa-2x" onClick={addAppt}></i></li>
                 <li><i class="fas fa-robot fa-2x"></i></li>
                 {user==="doctor"?<li><i class="fas fa-notes-medical fa-2x" onClick={viewAppts}></i></li>:null}
-                {user==="patient"?<li><i class="fas fa-tasks fa-2x" onClick={viewAppts}></i></li>:null} 
+                {user==="patient"||user==="admin"?<li><i class="fas fa-tasks fa-2x" onClick={viewAppts}></i></li>:null} 
             </ul>
         </div>
     )

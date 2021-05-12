@@ -9,9 +9,12 @@ import {useHistory} from 'react-router-dom';
 const axios=require('axios');
 function DocDashboard(){
     const user = JSON.parse(localStorage.getItem('doctor'));
-
     const [appts,getAppt]=useState([]);
     useEffect(()=>{
+        axios.get('http://localhost:5000/auth/checkAppt')
+        .then((res)=>{
+            console.log(res);
+        })
         axios.get('http://localhost:5000/auth/cAppt',{params:{doc:user.Doc_ID}})
         .then((res)=>{
             console.log(res)

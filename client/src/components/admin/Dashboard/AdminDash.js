@@ -17,12 +17,12 @@ function AdminDash(){
 
     const dispatch = useDispatch();
     const history = useHistory();
-    const user = JSON.parse(localStorage.getItem('profile'));
+    const user = JSON.parse(localStorage.getItem('admin'));
     const axios=require('axios')
 
 
     function logout(){
-        dispatch({ type: LOGOUT });
+        dispatch({ type: LOGOUT ,user:"admin"});
         history.push('/');
     }
 
@@ -47,7 +47,7 @@ function AdminDash(){
 
     return(
         <div className="wrapper">
-        <NavBar />
+        <NavBar user="admin"/>
         <div class="main_content">
             <div class="headZap">
                 <div class="header">{user?user.Admin_ID:null}</div>

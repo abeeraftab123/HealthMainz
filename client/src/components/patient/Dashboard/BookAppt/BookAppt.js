@@ -39,7 +39,8 @@ function BookAppt(){
             illness:illness,
             date:date,
             time:time,
-            approved:false
+            approved:false,
+            completed:false
         }
         console.log(data)
         axios.post("http://localhost:5000/auth/bookAppt",{data})

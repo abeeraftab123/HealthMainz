@@ -6,6 +6,7 @@ const appointment=new mongoose.Schema({
     illness:String,
     date:String,
     time:String,
-    approved:Boolean
+    approved:Boolean,
+    completed:Boolean
 });
 module.exports=mongoose.model("Appointment",appointment);

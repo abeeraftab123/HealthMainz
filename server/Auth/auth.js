@@ -11,6 +11,7 @@ const Doctor=require("../Models/doctor");
 const Patient=require("../Models/patients");
 const Admin=require("../Models/admin");
 const Appointment=require("../Models/appointment");
+const Report =require("../Models/report")
 
 const app=express();
 require("dotenv").config();
@@ -283,6 +284,7 @@ app.post("/bookAppt",(req,res)=>{
 
 app.get("/getAppt",(req,res)=>{
     let result=[]
+    var today = new Date();
     if(req.query.doc!==undefined){
         const id=(req.query.doc)
         Appointment.find({doc_id:id},(err,r)=>{
@@ -300,7 +302,8 @@ app.get("/getAppt",(req,res)=>{
         Appointment.find({pat_id:id},(err,r)=>{
             if(err) console.log(err)
             r.forEach((appt)=>{
-                if(appt.approved===true)
+                let compareDate=new Date(appt.date)
+                if(appt.approved===true&&appt.completed===false)
                 result.push(appt);
             })
             return res.status(200).json({result:result})
@@ -354,7 +357,7 @@ app.get("/cAppt",(req,res)=>{
         const id=(req.query.doc)
         Appointment.find({doc_id:id},(err,r)=>{
             if(err) console.log(err)
-            const cAppt=r.filter(appt=>appt.approved===true);
+            const cAppt=r.filter(appt=>appt.approved===true&&appt.completed===false);
             let result=[]
             cAppt.forEach(async appt=>{
                 try {
@@ -369,6 +372,97 @@ app.get("/cAppt",(req,res)=>{
             })
         })
     }
+})
+
+app.get("/checkAppt", (req,res)=>{
+    var today = new Date();
+    Appointment.find({},(err,appts)=>{
+        let doneAppt=[]
+        if(err) console.log(err)
+        appts.forEach(appt=>{
+            let compare=new Date(appt.date);
+            if((today>compare&&appt.approved===true)&&compare.getDay()!==today.getDay())
+            doneAppt.push(appt)
+        })
+        doneAppt.forEach(async appt=>{
+            Appointment.updateOne({Appt_ID:appt.Appt_ID},[{$set:{completed:true}}],(err,result)=>{
+                if(err) console.log(err)
+              })
+            let doc=await Doctor.findOne({Doc_ID:appt.doc_id});
+            let pat=await Patient.findOne({pat_ID:appt.pat_id});
+            let id=appt.Appt_ID.slice(3)
+
+            Report.findOne({Report_ID:"R"+id},(err,res)=>{
+                if(err) console.log(err)
+                if(!res){
+                    const newReport=new Report({
+                        Report_ID:"R"+id,
+                        Appt_ID:appt.Appt_ID,
+                        Doc_Name:doc.Doc_Name,
+                        Pat_Name:pat.Pat_Name,
+                        Appt_Date:appt.date,
+                        Appt_Time:appt.time,
+                        feedback:"Appointment Missed"
+                    })
+                    newReport.save();
+                }
+            })
+        })
+    })
+})
+
+app.get("/prevAppt",(req,res)=>{
+    let result=[]
+    // if(req.query.doc!==undefined){
+    //     const id=(req.query.doc)
+    //     Appointment.find({doc_id:id},(err,r)=>{
+    //         if(err) console.log(err)
+    //         r.forEach((appt)=>{
+    //             if(appt.approved===false)
+    //             result.push(appt);
+    //         })
+    //         return res.status(200).json({result:result})
+    //     })
+    // }
+
+    if(req.query.pat!==undefined){
+        const id=(req.query.pat)
+        Appointment.find({pat_id:id},(err,r)=>{
+            if(err) console.log(err)
+            let prevAppt= r.filter(appt=>appt.completed===true);
+            prevAppt.forEach(async(appt)=>{
+                const doc=await Doctor.findOne({Doc_ID:appt.doc_id});
+                let data={...appt._doc,Dname:doc.Doc_Name}
+                result.push(data);
+                if(result.length===prevAppt.length)
+                return res.status(200).json({result:result})
+            })
+        })
+    }
+
+    if(req.query.admin!==undefined){
+        Appointment.find({},(err,r)=>{
+            if(err) console.log(err)
+            let prevAppt= r.filter(appt=>appt.completed===true);
+            prevAppt.forEach(async(appt)=>{
+                const doc=await Doctor.findOne({Doc_ID:appt.doc_id});
+                let data={...appt._doc,Dname:doc.Doc_Name}
+                result.push(data);
+                if(result.length===prevAppt.length)
+                return res.status(200).json({result:result})
+            })
+        })
+    }
+
+})
+
+
+app.post("/getReport",(req,res)=>{
+    const id=req.body.apptID;
+    Report.findOne({Appt_ID:id},(err,report)=>{
+        if(err) console.log(err)
+        res.json({report:report})
+    })
 })
 
 

@@ -1,29 +1,44 @@
-import React,{useState} from "react"
+import React,{useState,useEffect} from "react"
 import NavBar from "../../NavBar/NavBar"
 import { LOGOUT } from "../../../constants/actionTypes";
 import { useDispatch } from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import Notification from "../../Notifications/Notification"
+import ReportCard from "../../patient/Dashboard/PatReport/ReportCard/ReportCard"
+import ReportDetails from "../../patient/Dashboard/PatReport/ReportDetails/ReportDetails"
 import "./AdmReport.css"
 function AdmReport(){
     
     const [notif,setNotify]=useState({isOpen:false,message:'',type:''})
-
     const dispatch = useDispatch();
     const history = useHistory();
-    const user = JSON.parse(localStorage.getItem('profile'));
+    const user = JSON.parse(localStorage.getItem('admin'));
     const axios=require('axios')
+
+    const [prevAppt,setAppt]=useState([])
+    const [details,setDetail]=useState({show:false,details:{}})
+
+     useEffect(()=>{
+         axios.get('http://localhost:5000/auth/prevAppt',{params:{admin:user.Admin_ID}})
+         .then((res)=>{
+             setAppt([...res.data.result])
+         })
+     },[])
+
+     let callback = (childData) =>{
+        setDetail({show:true,details:childData})
+    }
 
 
     function logout(){
-        dispatch({ type: LOGOUT });
+        dispatch({ type: LOGOUT ,user:"admin"});
         history.push('/');
     }
 
     
     return(
         <div className="wrapper">
-        <NavBar />
+        <NavBar user="admin"/>
         <div class="main_content">
             <div class="headZap">
                 <div class="header">{user?user.Admin_ID:null}</div>
@@ -40,36 +55,14 @@ function AdmReport(){
 
                     <p><b>View Appointment Reports</b></p>
                         <div class = "app_grid">
-                            <div class="app_view d1"></div>
-                            <div class="app_view d2"></div>
-                            <div class="app_view d3"></div>
-                            <div class="app_view d4"></div>
-                            <div class="app_view d5"></div>
-                            <div class="app_view d6"></div>
-                            <div class="app_view d7"></div>
-                            <div class="app_view d8"></div>
-                            <div class="app_view d9"></div>
+                        {prevAppt.map(appt=><ReportCard appt={appt} callback={callback} />)}
                            
                         </div>
                     </div>
                     <div class="cont c2">
                     <Notification notif={notif} ></Notification>
                         <p style = {{marginBottom:"20px"}}><b>Appointment Report</b></p>
-                        <div class="dropTHEbox">
-                            <div class="Illness drop">
-                                <span class="purpletext">Appointment ID: </span>
-                                <span class="purpletext">Appointment Date: </span>
-                                <span class="purpletext">Appointment Time: </span>
-                                <br></br>
-                                <span class="purpletext">Doctor: </span>
-                                <span class="purpletext">Patient: </span>
-                            </div>
-                            
-                        </div>
-                        <div class="symptoms">
-                            <span class="purpletext">Doctor Feedback:</span>
-                            <textarea type="text" class="symptom-box" rows="5" cols="50"></textarea>
-                        </div>
+                        <ReportDetails  details={details}/>
                        
                     </div>
                 </div>

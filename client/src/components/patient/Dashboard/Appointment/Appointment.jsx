@@ -14,7 +14,8 @@ export default function AppointmentCard(props) {
         let compareDate=new Date(appt.date)
         let minDiff=parseInt(currTime.slice(3,6))-parseInt(appt.time.slice(3,6));
         let hourDiff=parseInt(currTime.slice(0,2))-parseInt(appt.time.slice(0,2));
-        if(today.setHours(0,0,0,0) !== compareDate.setHours(0,0,0,0))
+        console.log();
+        if(today.getTime()<compareDate.getTime())
             setNotify({isOpen:true,message:"Appointment not scheduled today",type:'error'})
         else if(currTime<appt.time)
             setNotify({isOpen:true,message:"Appointment has not started",type:'error'})

@@ -16,6 +16,10 @@ function Dashboard(){
     }
     const[appts,getAppt]=useState([])
     useEffect(()=>{
+        axios.get('http://localhost:5000/auth/checkAppt')
+        .then((res)=>{
+            console.log(res);
+        })
         axios.get('http://localhost:5000/auth/getAppt',{params:{pat:user.pat_ID}})
         .then((res)=>{
             getAppt([...res.data.result])

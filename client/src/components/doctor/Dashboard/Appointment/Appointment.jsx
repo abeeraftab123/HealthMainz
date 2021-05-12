@@ -12,10 +12,16 @@ export default function AppointmentCard(props) {
         var today = new Date();
         let currTime = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
         let compareDate=new Date(appt.date)
-        if(currTime>=appt.time&&today.setHours(0,0,0,0) == compareDate.setHours(0,0,0,0))
-            history.push("/join?appID="+appt.Appt_ID)
-        else
+        let minDiff=parseInt(currTime.slice(3,6))-parseInt(appt.time.slice(3,6));
+        let hourDiff=parseInt(currTime.slice(0,2))-parseInt(appt.time.slice(0,2));
+        if(today.getTime()<compareDate.getTime())
+            setNotify({isOpen:true,message:"Appointment not scheduled today",type:'error'})
+        else if(currTime<appt.time)
             setNotify({isOpen:true,message:"Appointment has not started",type:'error'})
+        else if(minDiff>15||hourDiff!==0)
+            setNotify({isOpen:true,message:"Appointment Missed",type:'error'})
+        else
+            history.push("/join?appID="+appt.Appt_ID)
     }
     return(
         <div>

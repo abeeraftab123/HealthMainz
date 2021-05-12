@@ -1,8 +1,17 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import NavBar from "../../../NavBar/NavBar"
+import PrevAppt from "./PrevAppt/PrevAppt"
 import "./Profile.css"
 function PatProfile(){
+    const axios=require('axios')
     const user=JSON.parse(localStorage.getItem('patient'));
+    const [prevAppt,setAppt]=useState([])
+    useEffect(()=>{
+        axios.get('http://localhost:5000/auth/prevAppt',{params:{pat:user.pat_ID}})
+        .then((res)=>{
+            setAppt([...res.data.result])
+        })
+    },[])
     return(
         <div>
             <NavBar user="patient"/>
@@ -29,16 +38,7 @@ function PatProfile(){
 				        <div class="force-overflow"></div>
 			        </div>
                         <div class = "past_app_grid">
-                            <div class="past_app_view d1"></div>
-                            <div class="past_app_view d2"></div>
-                            <div class="past_app_view d3"></div>
-                            <div class="past_app_view d4"></div>
-                            <div class="past_app_view d5"></div>
-                            <div class="past_app_view d6"></div>
-                            <div class="past_app_view d7"></div>
-                            <div class="past_app_view d8"></div>
-                            <div class="past_app_view d9"></div>
-                           
+                            {prevAppt.map(appt=><PrevAppt appt={appt} />)}
                         </div>
                     </div>
                 </div>

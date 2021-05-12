@@ -5,6 +5,7 @@ import './Chat.css'
 import InfoBar from "../InfoBar/InfoBar"
 import Input from "../Input/Input"
 import Messages from "../Messages/Messages"
+import NavBar from "../../NavBar/NavBar"
 let socket;
 const Chat =({location})=>{
     const[name,setName]=useState('');
@@ -47,9 +48,9 @@ const Chat =({location})=>{
     }
 
     console.log(message,messages);
-
-
     return(
+        <>
+        <NavBar user="doctor" />
         <div className="outerContainer">
             <div className="container">
             <InfoBar room={room}/>
@@ -58,6 +59,7 @@ const Chat =({location})=>{
                 {/* <input value={message} onChange={(event)=>setMessage(event.target.value)} onKeyPress={(event)=>event.key==='Enter'?sendMessage(event):null} /> */}  
             </div>
         </div>
+        </>
     )
     
 }

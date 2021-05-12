@@ -24,14 +24,13 @@ const AdminLogin=()=>{
             password:password
         }).then((res)=>{
             console.log(res.data.admin);
-            dispatch({ type: AUTH, data:res.data.admin });
+            dispatch({ type: AUTH, data:res.data.admin,user:"admin" });
             history.push("/admin/dashboard")
         })
     };
     return(
         <>
         <div className="contain">
-        {/* <Notification notif={notif} ></Notification> */}
             <div className="join">
                 <div className="log">
                     <img id="logo-t" src={logo}></img>
