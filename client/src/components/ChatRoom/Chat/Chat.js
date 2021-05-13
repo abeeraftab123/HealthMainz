@@ -10,22 +10,24 @@ let socket;
 const Chat =({location})=>{
     const[name,setName]=useState('');
     const [room,setRoom]=useState('');
+    const[user,setUser]=useState('')
     const [message,setMessage]=useState('');
     const [messages,setMessages]=useState([]);
     useEffect(()=>{
-        const {name,room}=queryString.parse(location.search);
-
+        const {name,room,user}=queryString.parse(location.search);
+        console.log(user)
         socket=io('http://localhost:5000', { transports : ['websocket'] });
 
 
         setName(name);
         setRoom(room);
+        setUser(user)
 
             socket.emit('join',{name,room},()=>{
             
             });
         return ()=>{
-            socket.emit('disconnect');
+            socket.disconnect();
 
             socket.off();
         }
@@ -50,10 +52,10 @@ const Chat =({location})=>{
     console.log(message,messages);
     return(
         <>
-        <NavBar user="doctor" />
+        <NavBar user={user} />
         <div className="outerContainer">
             <div className="container">
-            <InfoBar room={room}/>
+            <InfoBar room={room} user={user}/>
             <Messages messages={messages} name={name}/>  
             <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
                 {/* <input value={message} onChange={(event)=>setMessage(event.target.value)} onKeyPress={(event)=>event.key==='Enter'?sendMessage(event):null} /> */}  

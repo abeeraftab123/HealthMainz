@@ -16,7 +16,7 @@ import AppointmentReq from "./components/doctor/Dashboard/AppointmentReq/Appoint
 import PatProfile from "./components/patient/Dashboard/Profile/Profile"
 import DocProfile from "./components/doctor/Dashboard/Profile/Profile"
 import PatReport from "./components/patient/Dashboard/PatReport/PatReport"
-
+import Report from "./components/doctor/Report/Report"
 const App = () =>{
     return(
         <Router>
@@ -36,6 +36,7 @@ const App = () =>{
             <Route path="/doctor/dashboard" component={DocDashboard} />
             <Route path="/doctor/apptsReq" component={AppointmentReq} />
             <Route path="/doctor/profile" component={DocProfile} />
+            <Route path="/doctor/generateReport" component={Report} />
 
 
             <Route path="/admin/login" component={AdminLogin} />

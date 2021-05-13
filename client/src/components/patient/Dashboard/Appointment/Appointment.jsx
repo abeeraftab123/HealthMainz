@@ -22,7 +22,7 @@ export default function AppointmentCard(props) {
         else if(minDiff>15||hourDiff!==0)
             setNotify({isOpen:true,message:"Appointment Missed",type:'error'})
         else
-            history.push("/join?appID="+appt.Appt_ID)
+            history.push("/join?appID="+appt.Appt_ID+"&user=patient")
     }
     return(
         <>

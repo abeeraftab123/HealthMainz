@@ -465,7 +465,35 @@ app.post("/getReport",(req,res)=>{
     })
 })
 
+app.post("/docReport",(req,res)=>{
+    const id=req.body.id;
+    console.log(req.body)
+    Appointment.findOne({Appt_ID:id},async (err,appt)=>{
+        if(err) console.log(err)
+        const doc=await Doctor.findOne({Doc_ID:appt.doc_id});
+        const pat=await Patient.findOne({pat_ID:appt.pat_id});
+        let result={
+            time:appt.time,
+            date:appt.date,
+            docName:doc.Doc_Name,
+            patName:pat.Pat_Name
+        }
 
+        res.json({result})
+    })
+})
+
+app.post("/createReport",(req,res)=>{
+    Appointment.updateOne({Appt_ID:req.body.data.Appt_ID},[{$set:{completed:true}}],(err,result)=>{
+        if(err) console.log(err)
+      })
+    let id=req.body.data.Appt_ID.slice(3)
+    let report={Report_ID:"R"+id,...req.body.data}
+    
+    const newReport=new Report(report)
+    newReport.save();
+    res.status(200).json({message:"created"})
+})
 
 module.exports=app;
 
