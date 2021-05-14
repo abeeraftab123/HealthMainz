@@ -51,13 +51,16 @@ function Report({location}){
                     <div className="rep_con">
                         <div className="infoBar_rep"><h1>Appointment Report</h1></div>
                             <div className="new_rep">
-                                <p><b>Appointment ID: {ID}</b></p>
-                                <p><b>Appointment Time: {time}</b></p>
-                                <p><b>Appointment Date: {date}</b></p>
-                                <p><b>Patient Name: {patient}</b></p>
-                                <p><b>Doctor Name: {doctor}</b></p>
-                                <textarea style={{height: "50%", width:"90%", border: "3px solid #85599A", borderRadius: "3px"}} placeholder="Enter Feedback" onChange={(event)=>setFeedback(event.target.value)}></textarea>
-                                <div style={{cursor:"pointer",backgroundColor:"#85599A",width:"20%"}} onClick={sendReport}>Generate Report</div> 
+                                <p><b>Appointment ID:</b> {ID}</p>
+                                <p><b>Appointment Time:</b> {time}</p>
+                                <p><b>Appointment Date:</b> {date}</p><br></br>
+                                <p><b>Patient Name:</b> {patient}</p>
+                                <p><b>Doctor Name:</b> {doctor}</p><br></br>
+                                <p><b>Enter Feedback</b></p>
+                                <textarea rows="7" cols="83" className="rep-box"  placeholder="Enter Feedback" onChange={(event)=>setFeedback(event.target.value)}></textarea>
+                                <div className="gen-rep-but-beauty"><div className="gen-rep-but" onClick={sendReport}>Generate Report</div></div>
+                                
+                                
                             </div>
                     </div>
                 </div>

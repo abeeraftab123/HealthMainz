@@ -12,7 +12,7 @@
     justify-content: space-between;
     background: #FFFFFF;
     padding: 0;
-    height: 70%;
+    height: 90%;
     width: 60%;
   }
 
@@ -41,6 +41,31 @@
       margin-left: 5%;
       margin-top: 2%;
   }
+
+.rep-box{
+    color: #553066;
+    /* height: 50%;
+    width: 93%; */
+    border: 3px solid #553066;
+    /* height: 60px; */
+    border-radius: 3px;
+}
+
+.gen-rep-but-beauty{
+    display: flex;
+    justify-content: center;
+    padding: 0 1em;
+    margin-left: -5%;
+    margin-top: 15px;
+}
+
+.gen-rep-but{
+    color: white;
+    background-color: #553066;
+    padding: 0.5em 1.5em;
+    border-radius:5px;
+    cursor: pointer;
+}
 
 
   @media (min-width: 320px) and (max-width: 480px) {
