@@ -3,6 +3,7 @@ import NavBar from "../../NavBar/NavBar"
 import queryString from 'query-string'
 import Notification from "../../Notifications/Notification"
 import { useHistory } from 'react-router-dom';
+import './Report.css'
 function Report({location}){
     const history = useHistory();
     const axios=require('axios')
@@ -45,17 +46,22 @@ function Report({location}){
         <>
             <NavBar user="doctor"></NavBar>
             <Notification notif={notif} ></Notification>
-            <div style={{marginLeft:"10%"}}>
-                <h1>Appointment report</h1>
-                <p>Appointment ID: {ID}</p>
-                <p>Appointment Time: {time}</p>
-                <p>Appointment Date: {date}</p>
-                <p>Patient Name: {patient}</p>
-                <p>Doctor Name: {doctor}</p>
-                <textarea placeholder="Enter Feedback" onChange={(event)=>setFeedback(event.target.value)}></textarea>
-                <div style={{cursor:"pointer",backgroundColor:"#85599A",width:"20%"}} onClick={sendReport}>Generate Report</div>
+            <div className="chat_rep_outerContainer">
+                <div className="chat_rep_container">
+                    <div className="rep_con">
+                        <div className="infoBar_rep"><h1>Appointment Report</h1></div>
+                            <div className="new_rep">
+                                <p><b>Appointment ID: {ID}</b></p>
+                                <p><b>Appointment Time: {time}</b></p>
+                                <p><b>Appointment Date: {date}</b></p>
+                                <p><b>Patient Name: {patient}</b></p>
+                                <p><b>Doctor Name: {doctor}</b></p>
+                                <textarea style={{height: "50%", width:"90%", border: "3px solid #85599A", borderRadius: "3px"}} placeholder="Enter Feedback" onChange={(event)=>setFeedback(event.target.value)}></textarea>
+                                <div style={{cursor:"pointer",backgroundColor:"#85599A",width:"20%"}} onClick={sendReport}>Generate Report</div> 
+                            </div>
+                    </div>
+                </div>
             </div>
-            
         </>
     )
 }
