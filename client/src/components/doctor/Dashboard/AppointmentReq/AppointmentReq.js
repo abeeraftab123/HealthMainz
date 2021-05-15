@@ -11,7 +11,7 @@ function AppointmentReq(){
     const axios=require('axios')
     const dispatch = useDispatch();
     const history = useHistory();
-    const[detail,setDetail]=React.useState({show:false,illness:'',date:'',time:'',id:'',pid:''})
+    const[detail,setDetail]=React.useState({show:false,illness:'',date:'',time:'',id:'',pid:'',s:''})
     const [appts,getAppt]=useState([]);
     console.log(detail)
     useEffect(()=>{
@@ -26,7 +26,7 @@ function AppointmentReq(){
         history.push('/');
     }
     let callback = (childData) =>{
-        setDetail({show:true,illness:childData.illness,time:childData.time,date:childData.date,id:childData.Appt_ID,pid:childData.pat_id})
+        setDetail({show:true,illness:childData.illness,time:childData.time,date:childData.date,id:childData.Appt_ID,pid:childData.pat_id,s:childData.symptom})
     }
     const user = JSON.parse(localStorage.getItem('doctor'));
     return (

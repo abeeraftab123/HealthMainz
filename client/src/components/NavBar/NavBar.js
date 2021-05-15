@@ -3,17 +3,11 @@ import {useHistory} from 'react-router-dom';
 import "./NavBar.css"
 function NavBar(props){
     const history = useHistory();
-   const user=props.user;
+    const user=props.user;
 
     function addAppt(){
         if(user==="patient"){
             history.push("/patient/bookAppt")
-        }
-        else if(user==="doctor"){
-            console.log("doctor signed in")
-        }
-        else{
-            console.log("admin signed in")
         }
     }
     function viewAppts(){
@@ -28,18 +22,30 @@ function NavBar(props){
         if(user==="patient"){
             history.push("/patient/profile")
         }
-        else if(user==="doctor"){
-            history.push("/doctor/profile")
-        }
+    }
+    function dashboard(){
+        if(user==="patient")
+        history.push("/dashboard")
+        if(user==="doctor")
+        history.push("/doctor/dashboard")
+        if(user==="admin")
+        history.push("/admin/dashboard")
     }
     return(
         <div class="sidebar">
-            <ul>
+            <i class="fas fa-home fa-2x" onClick={dashboard}></i>
+            <ul>{user==="patient"?<>
                 <li><i class="far fa-user fa-2x" onClick={profile}></i></li>
                 <li><i class="fas fa-plus fa-2x" onClick={addAppt}></i></li>
-                <li><i class="fas fa-robot fa-2x"></i></li>
-                {user==="doctor"?<li><i class="fas fa-notes-medical fa-2x" onClick={viewAppts}></i></li>:null}
-                {user==="patient"||user==="admin"?<li><i class="fas fa-tasks fa-2x" onClick={viewAppts}></i></li>:null} 
+                <li><i class="fas fa-tasks fa-2x" onClick={viewAppts}></i></li></>
+            :null}
+            {user==="doctor"?<>
+                <li><i class="fas fa-notes-medical fa-2x" onClick={viewAppts}></i></li>
+               </>
+            :null}
+            {user==="admin"?<>
+                <li><i class="fas fa-tasks fa-2x" onClick={viewAppts}></i></li></>
+            :null}
             </ul>
         </div>
     )

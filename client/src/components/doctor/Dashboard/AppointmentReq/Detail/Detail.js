@@ -24,6 +24,8 @@ function Detail(props){
                 <div className="ill">{props.detail.date}</div>
                 <div className="textDetail" style={{color:"#B390C3",marginTop:"5%"}}><b>Time</b></div>
                 <div className="ill">{props.detail.time}</div>
+                <div className="textDetail" style={{color:"#B390C3",marginTop:"5%"}}><b>Symptoms</b></div>
+                <div className="ill">{props.detail.s}</div>
                 <div className="buttons">
                     <div className="approve" onClick={confirm}>Approve</div>
                     <div className="reject">Reject</div>

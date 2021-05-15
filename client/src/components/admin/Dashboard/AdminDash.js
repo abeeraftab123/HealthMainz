@@ -37,12 +37,15 @@ function AdminDash(){
                 Doc_ph_no:phone,
                 Qualification:qual,
                 Dept_No:deptNo,
-                doc_pass:password,
-                Approved:false
+                doc_pass:password
         }).then((res)=>{
-                console.log(res)
+                if(res.data.msg){
+                    setNotify({isOpen:true,message:'Doctor already registered',type:'error'})
+                }
+                else
                 setNotify({isOpen:true,message:'Doctor registered',type:'success'})
         })
+
     };
 
     return(

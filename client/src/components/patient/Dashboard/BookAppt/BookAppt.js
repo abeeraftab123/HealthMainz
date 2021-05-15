@@ -17,6 +17,7 @@ function BookAppt(){
     const user = JSON.parse(localStorage.getItem('patient'));
     const [doctors,getDoctor]=useState([])
     const [illness,setIllness]=useState("Respiratory")
+    const [symptom,setSymptom]=useState('')
     const [date,setDate]=useState("")
     const [time,setTime]=useState("")
     const [doctor,setDoctor]=useState("")
@@ -39,6 +40,7 @@ function BookAppt(){
             illness:illness,
             date:date,
             time:time,
+            symptom:symptom,
             approved:false,
             completed:false
         }
@@ -88,7 +90,7 @@ function BookAppt(){
                         </div>
                         <div class="symptoms">
                             <span class="purpletext">Symptoms (State if any)</span>
-                            <textarea type="text" placeholder="Type your symptoms here." class="symptom-box" rows="5" cols="50"></textarea>
+                            <textarea type="text" placeholder="Type your symptoms here." class="symptom-box" rows="5" cols="50" onChange={(event)=>{setSymptom(event.target.value)}}></textarea>
                         </div>
                         <span style={{marginLeft: "15px", marginBottom: "-15px"}} class="purpletext">Doctors Available (for the given date and time)</span>
                         <div class="doctor_available">

@@ -9,7 +9,7 @@
 body{
     background-color: #14001E;
     color: white;
-    overflow: hidden !important;
+    /* overflow: hidden !important; */
 }
 
 .wrapper{
@@ -26,6 +26,13 @@ body{
 
 .sidebar{
     background-color: #2B1038 !important;
+}
+
+.fa-home{
+    color: #dfcd2d;
+    size: 10px;
+    padding-left:25px;
+    padding-top: 30px;
 }
 
 .fa-user{
