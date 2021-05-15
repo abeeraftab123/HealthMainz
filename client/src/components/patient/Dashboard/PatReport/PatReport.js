@@ -22,6 +22,7 @@ function PatReport(){
      },[])
 
      let callback = (childData) =>{
+         console.log(childData)
         setDetail({show:true,details:childData})
     }
 

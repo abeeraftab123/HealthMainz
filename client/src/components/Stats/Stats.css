@@ -1,0 +1,29 @@
+.stats{
+    overflow:auto;
+    height: 400px;
+}
+
+.stats::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px #2B1038;
+    box-shadow: inset 0 0 6px #2B1038;
+	border-radius: 10px;
+    border: none;
+	background-color: #2B1038;
+}
+
+.stats::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #2B1038;
+    border: none;
+}
+
+.stats::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px #2B1038;
+    box-shadow: inset 0 0 6px #2B1038;
+	background-color: #553066;
+    opacity: 40%;
+}

@@ -9,14 +9,15 @@ export default function AppointmentCard(props) {
     const [notif,setNotify]=useState({isOpen:false,message:'',type:''})
     let appt=props.appt;
     function chat(){
+        let [hour,min]=appt.time.split(':');
         var today = new Date();
-        let currTime = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
         let compareDate=new Date(appt.date)
-        let minDiff=parseInt(currTime.slice(3,6))-parseInt(appt.time.slice(3,6));
-        let hourDiff=parseInt(currTime.slice(0,2))-parseInt(appt.time.slice(0,2));
-        if(today.getTime()<compareDate.getTime())
+        let minDiff=today.getMinutes()-parseInt(min);
+        let hourDiff=today.getHours()-parseInt(hour);
+        console.log(parseInt(hour))
+        if(today.getDate()<compareDate.getDate())
             setNotify({isOpen:true,message:"Appointment not scheduled today",type:'error'})
-        else if(currTime<appt.time)
+        else if(today.getHours()<=parseInt(hour)&&today.getMinutes()<parseInt(min))
             setNotify({isOpen:true,message:"Appointment has not started",type:'error'})
         else if(minDiff>15||hourDiff!==0)
             setNotify({isOpen:true,message:"Appointment Missed",type:'error'})

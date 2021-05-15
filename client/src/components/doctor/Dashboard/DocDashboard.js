@@ -1,7 +1,8 @@
 import React,{useState,useEffect} from "react"
 import "./Dashboard.css"
 import NavBar from "../../NavBar/NavBar"
-import Map from "./Map/Map"
+import Map from "../../Map/Map"
+import Stats from "../../Stats/Stats"
 import AppointmentCard from "./Appointment/Appointment";
 import { LOGOUT } from "../../../constants/actionTypes";
 import { useDispatch } from 'react-redux';
@@ -46,7 +47,7 @@ function DocDashboard(){
                 {appts.map((appt,index)=><AppointmentCard appt={appt} />)}
                 </div>
                 </div>
-                <div class="stats">Statistics</div>
+                <Stats />
                 <Map/>
                 <div class="graph">Graph</div>
             </div>

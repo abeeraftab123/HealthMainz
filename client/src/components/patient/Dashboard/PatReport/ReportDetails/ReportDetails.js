@@ -2,7 +2,6 @@ import React from 'react'
 
 function ReportDetails(props){
     const details=props.details.details;
-    console.log(details)
     return(
         <>{props.details.show?<>
             <div class="dropTHEbox">
@@ -18,9 +17,9 @@ function ReportDetails(props){
             </div>
             <div class="symptoms">
                 <span class="purpletext">Doctor Feedback: </span>
-                <textarea type="text" class="symptom-box" rows="5" cols="50" style={{color:"white"}}>
+                <div type="text" class="symptom-box" rows="5" cols="50" style={{color:"white"}}>
                 {details.feedback}
-                </textarea>
+                </div>
             </div>
             </>
         :null}

@@ -9,6 +9,7 @@
 body{
     background-color: #14001E;
     color: white;
+    overflow: hidden !important;
 }
 
 .wrapper{
@@ -103,3 +104,6 @@ body{
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 1em;
 }
+
+
+

@@ -5,13 +5,13 @@
     list-style-type: none;
     text-decoration: none;
     font-family: 'Montserrat', sans-serif;
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 
 body{
     background-color: #14001E;
     color: white;
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 
 .wrapper{
