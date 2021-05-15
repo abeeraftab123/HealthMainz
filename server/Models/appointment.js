@@ -6,6 +6,7 @@ const appointment=new mongoose.Schema({
     illness:String,
     date:String,
     time:String,
+    symptom:String,
     approved:Boolean,
     completed:Boolean
 });

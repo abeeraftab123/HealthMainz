@@ -127,8 +127,8 @@ app.post("/patient/reg",(req,res)=>{
 });
 
 app.post("/doc/reg",(req,res)=>{
-    let doc=req.body;
-    Doctor.findOne({Doc_ID:doc.Doc_ID},(err,doctor)=>{
+    const doc=req.body;
+    Doctor.findOne({Doc_email:doc.Doc_email},(err,doctor)=>{
         if(doctor) return res.json({msg:"Doctor has already registered"})
         else if(!doctor){
             bcrypt.genSalt(10, function(err, salt) {
@@ -136,7 +136,7 @@ app.post("/doc/reg",(req,res)=>{
                     const newDoctor=new Doctor({
                         Doc_ID:doc.Doc_ID,
                         Doc_Name:doc.Doc_Name,
-                        Doc_ph_No:doc.Doc_ph_No,
+                        Doc_ph_No:doc.Doc_ph_no,
                         Doc_email:doc.Doc_email,
                         Qualification:doc.Qualification,
                         Dept_No:doc.Dept_No,
