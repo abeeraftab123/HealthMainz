@@ -7,7 +7,6 @@ function Detail(props){
     let pid=props.detail.pid;
     const [notif,setNotify]=useState({isOpen:false,message:'',type:''})
     function confirm(){
-        //setNotify({isOpen:true,message:'Appointment confirmed',type:'success'})
         axios.post('http://localhost:5000/auth/confirmAppt',{id:id,pid:pid})
         .then((res)=>{
             setNotify({isOpen:true,message:'Appointment confirmed',type:'success'})

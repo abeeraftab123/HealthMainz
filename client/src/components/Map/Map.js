@@ -49,7 +49,7 @@ function Map(){
         <div class="seachIcon" onClick={map}><i class="fas fa-search"></i></div>
         </div>
         <div className="mapBox">
-        {show?<MapPic markers={markers}/>:null}
+        {show?<MapPic markers={markers}/>:<img src="https://www.mapmyindia.com/api/img/demo1.png" style={{width:"100%",height:"100%"}} />}
                 
       </div>
         </div>

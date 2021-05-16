@@ -4,6 +4,8 @@ import { LOGOUT } from "../../../constants/actionTypes";
 import { useDispatch } from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import Notification from "../../Notifications/Notification"
+import Stats from "../../Stats/Stats"
+import Graph from "../../Graph/Graph"
 import "./AdminDash.css"
 function AdminDash(){
     const [password,setPassword]=useState("");
@@ -87,9 +89,9 @@ function AdminDash(){
                     
                 </div> 
 
-                <div class="stats">Statistics</div>
+                <Stats />
                 
-                <div class="graph">Graph</div>
+                <Graph />
             </div>
         </div>
         </div>

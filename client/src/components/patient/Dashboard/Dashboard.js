@@ -7,6 +7,7 @@ import { LOGOUT } from "../../../constants/actionTypes";
 import { useDispatch } from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import Stats from "../../Stats/Stats"
+import Graph from "../../Graph/Graph"
 function Dashboard(){
     const axios=require('axios')
     const dispatch = useDispatch();
@@ -43,12 +44,12 @@ function Dashboard(){
             <div class="grid-container">
                 <div class="app">Appointment
                 <div className="cardspat">
-                {appts.map((appt)=><AppointmentCard appt={appt}/>)}
+                {appts.map((appt,index)=><AppointmentCard appt={appt} />)}
                 </div>
                 </div>
                 <Stats />
                 <Map/>
-                <div class="graph">Graph</div>
+                <Graph />
             </div>
         </div>
         </div>

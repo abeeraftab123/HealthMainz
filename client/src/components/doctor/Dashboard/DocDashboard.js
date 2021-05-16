@@ -7,6 +7,7 @@ import AppointmentCard from "./Appointment/Appointment";
 import { LOGOUT } from "../../../constants/actionTypes";
 import { useDispatch } from 'react-redux';
 import {useHistory} from 'react-router-dom';
+import Graph from "../../Graph/Graph"
 const axios=require('axios');
 function DocDashboard(){
     const user = JSON.parse(localStorage.getItem('doctor'));
@@ -49,7 +50,7 @@ function DocDashboard(){
                 </div>
                 <Stats />
                 <Map/>
-                <div class="graph">Graph</div>
+                <Graph />
             </div>
         </div>
         </div>
