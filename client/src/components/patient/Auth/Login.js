@@ -31,6 +31,12 @@ const Login=()=>{
             }
         })
     };
+    const login=()=>{
+        history.push("/patient/login")
+    }
+    const register=()=>{
+        history.push("/patient/register")
+    }
     return(
         <>
             <div className="contain">
@@ -39,7 +45,7 @@ const Login=()=>{
                     <div className="log">
                         <img id="logo-t" src={logo}></img>
                         <div className="formz">
-                            <div id="act-inact"><span id="log-act">Login</span><span id="log-inact">Sign Up</span></div>
+                            <div id="act-inact"><span id="log-act" onClick={login}>Login</span><span id="log-inact" onClick={register}>Sign Up</span></div>
                             <input id="inpBox" type="text" name="user" placeholder="Patient ID" onChange={(event)=>{setUserName(event.target.value)}} ></input>
                             <input id="inpBox" type="password" name="pass" placeholder="Password" onChange={(event)=>{setPassword(event.target.value)}}></input>
                             <div className="formBut" onClick={log}>
@@ -47,7 +53,7 @@ const Login=()=>{
                             </div>
 
                         </div>
-                    <a href="#">Doctor?<br />Click Here </a>
+                    <a href="/doctor/login">Doctor?<br />Click Here </a>
                     </div>
                     
                 </div>

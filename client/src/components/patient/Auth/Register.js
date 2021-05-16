@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 import "./Register.css";
 import logo from "./Auth-public/title.png";
 import {Modal, Button} from 'react-bootstrap'
+import { AUTH } from '../../../constants/actionTypes';
 
 function MyVerticallyCenteredModal(props) {
     return (
@@ -32,7 +33,12 @@ function MyVerticallyCenteredModal(props) {
 }
 
 const axios=require("axios");
+
 const Register=()=>{
+    const dispatch=useDispatch();
+    const history = useHistory();
+    const [userName,setUserName]=useState("");
+    const [pass,setPass]=useState("");
 
     const [modalShow, setModalShow] = React.useState(false);
 
@@ -72,6 +78,27 @@ const Register=()=>{
             //setNotify({isOpen:true,message:'Patient registered',type:'success'})
         })
     };
+
+    const log = () => {
+      axios.post("http://localhost:5000/auth/patient/login",{
+          username:userName,
+          password:pass
+      }).then((res)=>{
+          if(res.data.msg){
+              setNotify({isOpen:true,message:res.data.msg,type:'error'})
+          }
+          else{
+              dispatch({ type: AUTH, data:res.data.patient ,user:'patient'});
+              history.push("/dashboard")
+          }
+      })
+  };
+    const login=()=>{
+      history.push("/patient/login")
+  }
+  const register=()=>{
+      history.push("/patient/register")
+  }
     return(
         <div>
             <div className="contain">
@@ -81,14 +108,14 @@ const Register=()=>{
                     <div className="log">
                         <img id="logo-t" src={logo}></img>
                         <div className="formz">
-                            <div id="act-inact"><span id="log-inact">Login</span><span id="log-act">Sign Up</span></div>
-                            <input id="inpBox" type="text" name="user" placeholder="Patient ID"></input> {/*onChange={(event)=>{setUserName(event.target.value)}}*/}
-                            <input id="inpBox" type="password" name="pass" placeholder="Password"></input> {/*onChange={(event)=>{setPassword(event.target.value)}}*/}
-                            <div className="formBut" >{/*onClick={log}*/}
+                            <div id="act-inact"><span id="log-inact" onClick={login}>Login</span><span id="log-act" onClick={register}>Sign Up</span></div>
+                            <input id="inpBox" type="text" name="user" placeholder="Patient ID" onChange={(event)=>setUserName(event.target.value)}></input> {/*onChange={(event)=>{setUserName(event.target.value)}}*/}
+                            <input id="inpBox" type="password" name="pass" placeholder="Password" onChange={(event)=>setPass(event.target.value)}></input> {/*onChange={(event)=>{setPassword(event.target.value)}}*/}
+                            <div className="formBut" onClick={log} >
                                 Login
                             </div>
                         </div>
-                    <a href="#">Doctor?<br />Click Here </a>
+                    <a href="/doctor/login">Doctor?<br />Click Here </a>
                     </div>
                 </div>
                 <div className="features">
