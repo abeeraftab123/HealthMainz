@@ -94,7 +94,7 @@ body{
     'app app app stats stats stats'
     'map map map graph graph graph'; */
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    /* grid-template-rows: 1fr 1fr; */
     grid-gap:30px;
     background-color: #14001E;
     padding: 1em;
@@ -105,7 +105,7 @@ body{
     background-color:#2B1038;
     padding:1em 1em 0em;
     color: #85599A;
-    font-size: 1.5rem;;
+    /* font-size: 1.5rem;; */
     font-weight: 600;
 }
 

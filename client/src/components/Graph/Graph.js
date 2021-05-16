@@ -27,7 +27,7 @@ function Graph(){
             fill: false,
             lineTension: 0.5,
             backgroundColor: '#FF9B06',
-            borderColor: 'black',
+            borderColor: '#85599A',
             borderWidth: 2,
             data: data
           }
@@ -51,7 +51,7 @@ function Graph(){
             fill: false,
             lineTension: 0.5,
             backgroundColor: 'red',
-            borderColor: 'black',
+            borderColor: '#85599A',
             borderWidth: 2,
             data: data
           }
@@ -75,7 +75,7 @@ function Graph(){
             fill: false,
             lineTension: 0.5,
             backgroundColor: 'green',
-            borderColor: 'black',
+            borderColor: '#85599A',
             borderWidth: 2,
             data: data
           }

@@ -11,7 +11,7 @@ function Map(){
     let m=[];
     async function map(){ 
       const headers = {
-        'Authorization': 'bearer d5290efc-9b4f-41c9-a9b5-0e5bfde00aa9',
+        'Authorization': 'bearer a00f493b-d952-4331-a2bb-1faca021cca2',
         'Access-Control-Allow-Origin':'*'
       };
       const url1=`https://peaceful-oasis-36229.herokuapp.com/https://atlas.mapmyindia.com/api/places/geocode?address=${address}&itemCount=1`;

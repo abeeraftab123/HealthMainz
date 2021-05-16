@@ -83,6 +83,9 @@ body{
 .map{grid-area:map;}
 .graph{grid-area:graph;} */
 
+.app-doc{
+    font-size: 1.5rem;
+}
 .grid-container-doc{
     display:grid;
     /* grid-template-areas: 
@@ -100,7 +103,7 @@ body{
     background-color:#2B1038;
     padding:1em 1em 0em;
     color: #85599A;
-    font-size: 1.5rem;;
+    /* fzont-size: 1.5rem;; */
     font-weight: 600;
 }
 

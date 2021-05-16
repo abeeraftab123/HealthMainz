@@ -17,11 +17,13 @@ function Stats(){
 				<div className="force-overflow"></div>
 			</div>
             <table>
-                <tr>
-                    <td>State name</td>
+                <tr style={{color: "#FFF", backgroundColor: "#553066", borderRadius: "2px"}}>
+                    <td colspan="2">State name</td>
                     <td>Active Cases</td>
+                    <td>Deaths</td>
+                    <td>Recovered Cases</td>
                 </tr>
-                {stats.map(data=><Cell name={data.state} active={data.active}/>)}
+                {stats.map(data=><Cell name={data.state} active={data.active} deaths={data.deaths} recovered={data.recovered}/>)}
             </table>
             
         </div>
