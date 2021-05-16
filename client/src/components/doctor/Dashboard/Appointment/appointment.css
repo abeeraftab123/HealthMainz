@@ -1,6 +1,6 @@
 .appointmentCard{
-    height: 230px;
-    width: 180px;
+    height: 200px;
+    width: 160px;
     background-color: #553066;
     margin-top: 15px;
     border-radius: 10px;
@@ -29,7 +29,7 @@
 }
 
 .name{
-    margin-top:10%;
+    margin-top:2%;
 }
 
 .ill{

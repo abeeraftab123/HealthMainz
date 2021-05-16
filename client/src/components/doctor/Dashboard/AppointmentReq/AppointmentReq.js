@@ -41,13 +41,13 @@ function AppointmentReq(){
                         </div>
                 </div>
                 <div class="containerApp">
-                    <div class="cont c1">
+                    <div class="contapp c1">
                     <p style = {{marginBottom:"20px"}}><b>Appointment Requests</b></p>
                     <p style={{color:"#B390C3"}}>(Click on the appointment to see details)</p>
                     {appts.map((appt)=><Card appt={appt} callBack={callback}/>)}
                     </div>
-                    <div class="cont c2">
-                    <p style = {{marginBottom:"20px"}}><b>Details</b></p>
+                    <div class="contapp c2">
+                    <p style = {{marginBottom:"20px", marginLeft:"8px",}}><b>Details</b></p>
                     <Detail detail={detail}></Detail>
                     </div>
                 </div>

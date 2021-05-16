@@ -1,19 +1,19 @@
 import React from 'react'
 import "./DocCard.css"
 function DocCard(props){
-    let className=`av ${props.index+1}`
+    let className=`bav ${props.index+1}`
     function callback(event){
         event.preventDefault();
         props.callback(props.id);
     }
     return(
-        <div class="available_card">
+        <div class="available_card_book">
             <div class={className}>
-                {props.id}
-                <br></br>
-                {props.name}
-                <br></br>
-                <button className="book" onClick={callback}>Select</button>
+                <p style={{padding: "0"}}>{props.id}</p>
+                
+                <p style={{padding: "0"}}>{props.name}</p>
+                
+                <div className="book-ap2" onClick={callback}>Select</div>
             </div>
         </div>
     )

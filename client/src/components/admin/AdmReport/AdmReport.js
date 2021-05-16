@@ -53,13 +53,13 @@ function AdmReport(){
 				        <div class="force-overflow"></div>
 			        </div>
 
-                    <p><b>View Appointment Reports</b></p>
+                    <p style={{marginLeft:"20px"}}><b>View Appointment Reports</b></p>
                         <div class = "app_grid">
                         {prevAppt.map(appt=><ReportCard appt={appt} callback={callback} />)}
                            
                         </div>
                     </div>
-                    <div class="cont c2">
+                    <div class="contpat c2">
                     <Notification notif={notif} ></Notification>
                         <p style = {{marginBottom:"20px"}}><b>Appointment Report</b></p>
                         <ReportDetails  details={details}/>

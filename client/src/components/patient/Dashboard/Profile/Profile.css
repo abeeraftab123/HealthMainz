@@ -85,7 +85,7 @@ body{
 .containerPatProf {
     background-color: #14001E;
     display: grid;
-    grid-template-columns: 800px 725px;
+    grid-template-columns: 720px 640px;
     padding: 1em;
     grid-gap: 2em;
     padding-left: 0px;
@@ -96,7 +96,7 @@ body{
 
 .cont_past_app {
     background-color: #2B1038;
-    height: 800px;
+    height: 720px;
     overflow: auto;
     
 }
@@ -107,8 +107,9 @@ body{
 }
 
 .cont_past_app p{
-    padding-left: 1em;
-    font-size: 30px;
+    text-align: center;
+    font-size: 23px;
+    margin-top: 10%
 }
 
 .cont_profile p{
@@ -118,7 +119,7 @@ body{
 
 .cont_profile{
     background-color: #2B1038;
-    height: 780px;
+    height: 720px;
     overflow:auto;
     text-align: left;
     padding: 1.5em 1em 0.5em;
@@ -133,15 +134,17 @@ body{
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     gap: 1.5em;
-    overflow: auto !important;
+    /* overflow: auto !important; */
     margin-left: 2%;
 }
 
 .past_app_view {
     height: 220px;
-    width: 190px;
+    width: 165px;
     background-color: #553066;
     border-radius: 7px;
+    
+
 }
 
 .cont_past_app::-webkit-scrollbar-track
@@ -268,4 +271,9 @@ body{
     line-height: 80px;
     /* vertical-align: middle; */
     padding: 0px;
+}
+
+.head-prof{
+    font-size: 30px;
+    margin-left: 25px;
 }

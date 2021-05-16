@@ -79,41 +79,42 @@ body{
 .containerBook {
     background-color: #14001E;
     display: grid;
-    grid-template-columns: 1000px 525px;
+    grid-template-columns: 830px 525px;
     padding: 1em;
     grid-gap: 2em;
     padding-left: 0px;
-    height: 90%;
+    height: 50%;
     width: 100%;
     margin-left: 120px;
 }
 
-.cont {
+.cont-book {
     background-color: #2B1038;
+    height: 640px;
 }
 
-.cont {
+.cont-book {
     text-align: left;
     padding: 1.5em 1em 0.5em;
 }
 
-.cont p{
+.cont-book p{
     padding-left: 1em;
 }
 
 
-.doc_grid {
-    height: 100%;
+.doc_grid_spec {
+    height: 95%;
     width: 100%;
     padding: 1em;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-    grid-gap: 0.75em;
+    grid-gap: 0.45em;
 }
 
-.doc {
-    height: 170px;
+.spec-doc {
+    height: 160px;
     width: 140px;
     background-color: #553066;
     border-radius: 7px;
@@ -157,16 +158,16 @@ body{
     font-weight: 700;
 }
 
-.available_card{
+.available_card_book{
     display: flex;
     margin-top:20px;
 
 }
 
-.doctor_available{
+.doctor_available_book{
     padding: 1em;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
 
 .av {
@@ -179,7 +180,7 @@ body{
 }
 
 #notice{
-    margin-top: 20px;
+    margin-top: 10px;
     color: rgb(247, 107, 107);
 }
 
@@ -190,12 +191,13 @@ body{
     margin-top: -15px;
 }
 
-.book{
+.book-ap{
     color: white;
     background-color: #553066;
     padding: 0.5em 1.5em;
     border-radius:5px;
     cursor: pointer;
+    margin-top: -40px;
 }
 
 #illdrop{

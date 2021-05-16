@@ -19,13 +19,13 @@ function Detail(props){
             {props.detail.show?
             <div>
                 <div className="textDetail" style={{color:"#B390C3"}}><b>Type of illness</b></div>
-                <div className="ill">{props.detail.illness}</div>
+                <div className="illness">{props.detail.illness}</div>
                 <div className="textDetail" style={{color:"#B390C3",marginTop:"5%"}}><b>Date</b></div>
-                <div className="ill">{props.detail.date}</div>
+                <div className="illness">{props.detail.date}</div>
                 <div className="textDetail" style={{color:"#B390C3",marginTop:"5%"}}><b>Time</b></div>
-                <div className="ill">{props.detail.time}</div>
+                <div className="illness">{props.detail.time}</div>
                 <div className="textDetail" style={{color:"#B390C3",marginTop:"5%"}}><b>Symptoms</b></div>
-                <div className="ill">{props.detail.s}</div>
+                <div className="illness">{props.detail.s}</div>
                 <div className="buttons">
                     <div className="approve" onClick={confirm}>Approve</div>
                     <div className="reject">Reject</div>

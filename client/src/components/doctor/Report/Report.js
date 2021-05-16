@@ -57,7 +57,7 @@ function Report({location}){
                                 <p><b>Patient Name:</b> {patient}</p>
                                 <p><b>Doctor Name:</b> {doctor}</p><br></br>
                                 <p><b>Enter Feedback</b></p>
-                                <textarea rows="7" cols="83" className="rep-box"  placeholder="Enter Feedback" onChange={(event)=>setFeedback(event.target.value)}></textarea>
+                                <textarea rows="5" cols="70" className="rep-box"  placeholder="Enter Feedback" onChange={(event)=>setFeedback(event.target.value)}></textarea>
                                 <div className="gen-rep-but-beauty"><div className="gen-rep-but" onClick={sendReport}>Generate Report</div></div>
                                 
                                 

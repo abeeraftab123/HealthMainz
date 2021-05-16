@@ -27,18 +27,17 @@ export default function AppointmentCard(props) {
     return(
         <>
         <Notification notif={notif} ></Notification>
-        <div className="appointmentCard">
-            <h4> ID: {appt.Appt_ID}</h4>
+        <div className="appointmentCard-p">
+            <h5 className="aptid">  {appt.Appt_ID}</h5>
             Doctor ID: {appt.doc_id}
             <br></br>
-            Illness: {appt.illness}
+            {/* Illness: {appt.illness}
+            <br></br> */}
+            <b>{appt.date}</b>
             <br></br>
-            Date: {appt.date}
+            <b>{appt.time}</b>
             <br></br>
-            Time: {appt.time}
-            <br></br>
-            <br></br>
-            <div class="button" onClick={chat}>Join</div>
+            <div class="button-p" onClick={chat}>Join</div>
         </div>
         </>
     )

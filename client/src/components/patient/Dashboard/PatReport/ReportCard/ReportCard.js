@@ -14,10 +14,11 @@ function ReportCard(props){
     const appt=props.appt
     return(
         <div class="app_view d1" onClick={sendDetails}>
+            <div class="tt">
             <p>{appt.Dname}</p>
             <p>{appt.date}</p>
             <p>{appt.time}</p>
-            <p>{appt.Appt_ID}</p>
+            <p>{appt.Appt_ID}</p> </div>
         </div>
     )
 }

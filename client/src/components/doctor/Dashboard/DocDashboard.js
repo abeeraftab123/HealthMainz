@@ -41,7 +41,7 @@ function DocDashboard(){
             <i class="fas fa-sign-out-alt"></i>
             </div>
             </div>
-            <div class="grid-container">
+            <div class="grid-container-doc">
                 <div class="app">Appointments 
                 <div className="cards">
                 {appts.map((appt,index)=><AppointmentCard appt={appt} />)}

@@ -1,6 +1,6 @@
 .stats{
     overflow:auto;
-    height: 400px;
+    height: 290px;
 }
 
 .stats::-webkit-scrollbar-track

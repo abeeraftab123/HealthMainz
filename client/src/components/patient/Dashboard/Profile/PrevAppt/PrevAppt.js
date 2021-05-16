@@ -5,10 +5,11 @@ function PrevAppt(props){
     console.log(appt)
     return(
         <div class="past_app_view d1">
+            <p><b>{appt.Appt_ID}</b></p>
             <p>{appt.Dname}</p>
             <p>{appt.date}</p>
-            <p>{appt.time}</p>
-            <p>{appt.Appt_ID}</p>
+            <p>Time: {appt.time}</p>
+            
         </div>
     )
 }

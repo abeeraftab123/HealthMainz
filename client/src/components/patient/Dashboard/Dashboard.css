@@ -9,7 +9,7 @@
 body{
     background-color: #14001E;
     color: white;
-    /* overflow: hidden !important; */
+    overflow: hidden !important;
 }
 
 .wrapper{
@@ -80,6 +80,9 @@ body{
     font-weight: 200;
 }
 
+.app{
+    height: 290px;
+}
 /* .app{grid-area:app;}
 .stats{grid-area:stats;}
 .map{grid-area:map;}
@@ -91,18 +94,19 @@ body{
     'app app app stats stats stats'
     'map map map graph graph graph'; */
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    grid-gap:30px;
+    /* grid-template-rows: 1fr 1fr;  */
+    grid-gap: 30px;
     background-color: #14001E;
     padding: 1em;
     margin-left: 100px;
+    /* margin-bottom: 20%; */
 }
 
 .grid-container > div{
     background-color:#2B1038;
     padding:1em 1em 0em;
     color: #85599A;
-    font-size: 1.5rem;;
+    font-size: 1.0rem;;
     font-weight: 600;
 }
 

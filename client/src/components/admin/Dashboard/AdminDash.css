@@ -131,14 +131,14 @@ body{
 
 #inpBoxDoc {
     width:90%;
-    height:50px;
+    height:40px;
     margin-bottom: 10px ;
     margin-top: 20px ;
     margin-left: 25px;
     border: 2.5px solid #75428D;
     border-radius: 0px;
     padding: 0.5em;
-    font-size: 1.25rem;
+    font-size: 0.9rem;
     float: left;
     background: #2B1038;
     color: #75428D;
@@ -146,17 +146,17 @@ body{
 
 .addDocBut {
     background-color: #4E9B29;
-    height: 50px;
+    height: 40px;
     width:25%;
-    margin-top: 540px;
+    margin-top: 480px;
     margin-left: 68%;
-    margin-bottom:30px;
+    margin-bottom:25px;
     display: grid;
     justify-content: center;
     align-items: center;
     font-size: 1.25rem;
-    font-weight:600;
-    border-radius: 10px;
+    font-weight:300;
+    border-radius: 5px;
     cursor: pointer;
     color: #fff;
 }

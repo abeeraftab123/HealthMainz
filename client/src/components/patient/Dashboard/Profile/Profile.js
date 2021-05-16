@@ -27,13 +27,13 @@ function PatProfile(){
                             <p><span class="pattext">Address:</span> {user.Address}</p>
                             <p><span class="pattext">Gender:</span> {user.Gender}</p>
                             <p><span class="pattext">Blood Group:</span> {user.Blood_Group}</p>
-                            <i class="fas fa-user-edit fa-2x circle-icon" style = {{marginLeft:"80%"}}></i>
+                            {/* <i class="fas fa-user-edit fa-2x circle-icon" style = {{marginLeft:"80%"}}></i> */}
                         </div>
                     </div>
                     <div class="cont_past_app">
                     
 
-                    <p><b>Your Appointments</b></p>
+                    <b className="head-prof">Your Appointments</b>
                     <div class="scrollbar">
 				        <div class="force-overflow"></div>
 			        </div>
