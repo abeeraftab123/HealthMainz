@@ -11,7 +11,8 @@ const Doctor=require("../Models/doctor");
 const Patient=require("../Models/patients");
 const Admin=require("../Models/admin");
 const Appointment=require("../Models/appointment");
-const Report =require("../Models/report")
+const Report =require("../Models/report");
+const { parse } = require('dotenv');
 
 const app=express();
 require("dotenv").config();
@@ -262,15 +263,49 @@ app.post("/admin/login",(req,res)=>{
 })
 
 
-app.get("/getDoctors",(req,res)=>{
+app.post("/getDoctors",async (req,res)=>{
     let ans=[];
-    Doctor.find({},(err,results)=>{
-        if(err) console.log(err)
-        results.forEach(r=>{
-            ans.push(r);
+    console.log(req.body)
+    const dept=req.body.illness
+    const time=req.body.time
+    const date=req.body.date
+    if(time!==""&&date!=""){
+        // Doctor.find({Dept_No:dept},(err,results)=>{
+        //     if(err) console.log(err)
+        //     results.forEach(r=>{
+        //         ans.push(r);
+        //     })
+        //     res.json({result:ans});
+        // })
+        const doctor= await Doctor.find({Dept_No:dept})
+        const allAppt= await Appointment.find({completed:false,illness:dept})
+        doctor.forEach((doc)=>{
+            const appt=allAppt.filter(appt=>appt.doc_id==doc.Doc_ID)
+            if(appt.length===0)
+            ans.push(doc)
+            else{
+                const sameDateAppt=appt.filter((appt)=>appt.date==date)
+                if(sameDateAppt.length===0)
+                ans.push(doc)
+                else{
+                        let flag=0;
+                        sameDateAppt.forEach(appt=>{
+                            let [hour,min]=appt.time.split(':');
+                            let [checkHour,checkMin]=time.split(':');
+                            let minutes1=(hour*60)+min;
+                            let minutes2=(checkHour*60)+checkMin;
+                            if(Math.abs(minutes1-minutes2)<40){
+                                flag=1;
+                            }
+                        })
+                        console.log(flag)
+                        if(flag===0)
+                        ans.push(doc)
+                }
+            }
         })
         res.json({result:ans});
-    })
+    }
 })
 
 app.post("/bookAppt",(req,res)=>{

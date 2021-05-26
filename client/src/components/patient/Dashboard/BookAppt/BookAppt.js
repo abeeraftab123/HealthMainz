@@ -23,12 +23,12 @@ function BookAppt(){
     const [doctor,setDoctor]=useState("")
     const [notif,setNotify]=useState({isOpen:false,message:'',type:''})
     useEffect(()=>{
-        axios.get('http://localhost:5000/auth/getDoctors')
+        axios.post('http://localhost:5000/auth/getDoctors',{illness:illness,date:date,time:time})
         .then((res)=>{
             console.log(res.data.result);
             getDoctor([...res.data.result]);
         })
-    },[])
+    },[illness,date,time])
     function bookAppt(){
         var min = 100;
         var max = 2000;

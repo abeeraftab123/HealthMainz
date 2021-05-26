@@ -14,7 +14,7 @@ function AdminDash(){
     const [phone,setPhone]=useState("");
     const [qual,setQual]=useState("");
     const [email,setEmail]=useState("");
-    const [deptNo,setDept]=useState("");
+    const [deptNo,setDept]=useState("Respiratory");
     const [notif,setNotify]=useState({isOpen:false,message:'',type:''})
 
     const dispatch = useDispatch();
@@ -50,6 +50,8 @@ function AdminDash(){
 
     };
 
+    console.log(deptNo)
+
     return(
         <div className="wrapper">
         <NavBar user="admin"/>
@@ -77,7 +79,14 @@ function AdminDash(){
                         {/* <br></br> */}
                         <div class="it1"><input id="inpBoxDoc" type="text" placeholder="Qualification*" onChange={(event)=>{setQual(event.target.value)}}></input></div>
                         {/* <br></br> */}
-                        <div class="it1"><input id="inpBoxDoc" type="text" placeholder="Department" onChange={(event)=>{setDept(event.target.value)}}></input></div>
+                        <div class="it1">
+                                <select id="inpBoxDoc" onChange={(event)=>{setDept(event.target.value)}}>  
+                                    <option value="Respiratory">Respiratory</option>
+                                    <option value="Cardiac">Cardiac</option>
+                                    <option value="General">General</option>
+                                    <option value="Gynec">Gynec</option>
+                                </select>
+                        </div>
                         {/* <br></br> */}
                         <div class="it1"><input id="inpBoxDoc" type="password" placeholder="Password" onChange={(event)=>{setPassword(event.target.value)}}></input></div>
                         <br></br>
