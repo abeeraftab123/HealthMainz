@@ -3,6 +3,7 @@ import NavBar from "../../NavBar/NavBar"
 import queryString from 'query-string'
 import Notification from "../../Notifications/Notification"
 import { useHistory } from 'react-router-dom';
+import { saveAs } from 'file-saver';
 import './Report.css'
 function Report({location}){
     const history = useHistory();

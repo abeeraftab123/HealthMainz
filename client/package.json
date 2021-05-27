@@ -13,6 +13,7 @@
     "bootstrap": "^4.6.0",
     "chart.js": "^3.2.1",
     "dotenv": "^9.0.2",
+    "file-saver": "^2.0.5",
     "mapmyindia-react": "^1.0.6",
     "query-string": "^6.14.1",
     "react": "^17.0.1",
