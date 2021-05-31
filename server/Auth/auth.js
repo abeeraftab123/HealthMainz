@@ -522,6 +522,9 @@ app.post("/docReport",(req,res)=>{
 })
 
 app.post("/createReport",async (req,res)=>{
+    let ID=req.body.data.Appt_ID;
+    const appt=await Appointment.findOne({Appt_ID:ID});
+    const pat=await Patient.findOne({pat_ID:appt.pat_id})
     Appointment.updateOne({Appt_ID:req.body.data.Appt_ID},[{$set:{completed:true}}],(err,result)=>{
         if(err) console.log(err)
       })
@@ -531,47 +534,50 @@ app.post("/createReport",async (req,res)=>{
     const newReport=new Report(report)
     newReport.save();
 
-    pdf.create(pdfTemplate(report)).toFile("R"+id+".pdf", (err) => {
+    pdf.create(pdfTemplate(report,appt,pat)).toFile("R"+id+".pdf", async (err) => {
         if(err) {
             return console.log('error');
         }
-      });
-    let appt= await Appointment.findOne({Appt_ID:req.body.data.Appt_ID})
-    let pat=await Patient.findOne({pat_ID:appt.pat_id})
-    let mail=pat.Email_ID;
+        else{
+                let appt= await Appointment.findOne({Appt_ID:req.body.data.Appt_ID})
+                let pat=await Patient.findOne({pat_ID:appt.pat_id})
+                let mail=pat.Email_ID;
 
-    let transporter = nodemailer.createTransport({
-        host:  "smtp.gmail.com",
-        port: 587,
-        secure: false, 
-        auth: {
-            user: 'healthmainz@gmail.com', 
-            pass: process.env.mail_pass  
-        },
-        tls:{
-          rejectUnauthorized:false
+                let transporter = nodemailer.createTransport({
+                    host:  "smtp.gmail.com",
+                    port: 587,
+                    secure: false, 
+                    auth: {
+                        user: 'healthmainz@gmail.com', 
+                        pass: process.env.mail_pass  
+                    },
+                    tls:{
+                    rejectUnauthorized:false
+                    }
+                });
+                
+                let mailOptions = {
+                    from: '"HealthMainz" <healthmainz@gmail.com>', 
+                    to: mail, 
+                    subject: 'Appointment Report', 
+                    text: 'Hello world?', 
+                    html: "Greetings "+pat.Pat_Name+" your appointment report for Appointment ID "+req.body.data.Appt_ID+" is attached below",
+                    attachments: [{
+                        filename: "R"+id+".pdf",
+                        path: "C:\\Users\\Yashi S\\HealthMainz\\server\\"+"R"+id+".pdf",
+                        contentType: 'application/pdf'
+                    }]
+                };
+                
+                transporter.sendMail(mailOptions, (error, info) => {
+                    if (error) {
+                        return console.log(error);
+                    }
+                    res.status(200).json({message:"created"})
+                });
         }
       });
-    
-      let mailOptions = {
-          from: '"HealthMainz" <healthmainz@gmail.com>', 
-          to: mail, 
-          subject: 'Appointment Report', 
-          text: 'Hello world?', 
-          html: "Greetings "+pat.Pat_Name+" your appointment report for Appointment ID "+req.body.data.Appt_ID+" is attached below",
-          attachments: [{
-            filename: "R"+id+".pdf",
-            path: "C:\\Users\\Yashi S\\HealthMainz\\server\\"+"R"+id+".pdf",
-            contentType: 'application/pdf'
-          }]
-      };
-    
-      transporter.sendMail(mailOptions, (error, info) => {
-          if (error) {
-              return console.log(error);
-          }
-          res.status(200).json({message:"created"})
-      });
+   
     
   
     

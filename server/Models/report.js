@@ -6,6 +6,7 @@ const report=new mongoose.Schema({
     Pat_Name:String,
     Appt_Date:String,
     Appt_Time:String,
-    feedback:String
+    feedback:String,
+    meds:Array
 });
 module.exports=mongoose.model("Report",report);
