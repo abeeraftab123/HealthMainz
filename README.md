@@ -5,6 +5,7 @@ The global pandemic caused by the novel coronavirus (COVID-19) spawned a healthc
 - Lack of beds in the hospitals for the patients  
 - Financial losses due to unexpected medical charges  
 - Ethnic disparities in the healthcare system, etc.  
+
 These problems are not restricted to COVID-19 only, but are really common during some acute pandemics in some parts of the country as well as for some common diseases.  
 
 ## Problem Statement: 
