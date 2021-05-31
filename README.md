@@ -23,6 +23,10 @@ npm start
 
 ![User Login.png](https://images.zenhubusercontent.com/6096fbff75c041832469625d/36811b45-dff7-44d4-8cd2-f5aa0423bffe)
 
+## Technologies Used
+
+![Frame 2](https://user-images.githubusercontent.com/54543768/120167294-30966400-c21b-11eb-9f4c-dc13bbca98b7.png)
+
 ## Contributors
 
 <table>
