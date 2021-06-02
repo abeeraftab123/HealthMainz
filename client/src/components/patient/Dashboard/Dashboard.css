@@ -9,7 +9,7 @@
 body{
     background-color: #14001E;
     color: white;
-    /* overflow: hidden !important; */
+    overflow: hidden !important;
 }
 
 .wrapper{

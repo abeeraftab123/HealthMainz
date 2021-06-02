@@ -11,7 +11,12 @@ const PORT=process.env.PORT || 5000;
 //const router=require('./router');
 const app=express();
 const server=http.createServer(app);
-const io=socketio(server);
+const io=socketio(server,{
+	cors: {
+		origin: "*",
+		methods: [ "GET", "POST" ]
+	}
+});
 
 //app.use(router);
 // app.use(cors({
@@ -22,11 +27,11 @@ const io=socketio(server);
 
 app.use(cors());
 
-app.all('/', function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    next()
-  });
+// app.all('/', function(req, res, next) {
+//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header("Access-Control-Allow-Headers", "X-Requested-With");
+//     next()
+//   });
 app.use("/auth",require("./Auth/auth"));
 
 io.on('connection',(socket) =>{
@@ -71,6 +76,20 @@ io.on('connection',(socket) =>{
             io.to(user.room).emit('message',{user:'admin',text:`${user.name} has left`});
         }
     });
+
+    socket.emit("me", socket.id);
+
+	socket.on("disconnectCall", () => {
+		socket.broadcast.emit("callEnded")
+	});
+
+	socket.on("callUser", ({ userToCall, signalData, from, name }) => {
+		io.to(userToCall).emit("callUser", { signal: signalData, from, name });
+	});
+
+	socket.on("answerCall", (data) => {
+		io.to(data.to).emit("callAccepted", data.signal)
+	});
 
 })
 

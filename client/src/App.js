@@ -17,9 +17,12 @@ import PatProfile from "./components/patient/Dashboard/Profile/Profile"
 import DocProfile from "./components/doctor/Dashboard/Profile/Profile"
 import PatReport from "./components/patient/Dashboard/PatReport/PatReport"
 import Report from "./components/doctor/Report/Report"
+import Video from "./components/VideoCall/index"
 const App = () =>{
     return(
         <Router>
+
+            <Route path="/video" component={Video} />
 
             <Route path="/join" exact component={Join} />
             <Route path="/chat" component={Chat} />
