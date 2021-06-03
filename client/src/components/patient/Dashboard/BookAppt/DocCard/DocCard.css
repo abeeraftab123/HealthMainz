@@ -1,12 +1,13 @@
 .doctor_available_book{
     text-align: center;
-    padding: 1em;
+    /* padding: 1em; */
+    margin-left: 20px;
     display: flex;
     flex-direction: row;
 }
 
 .bav {
-    height: 140px;
+    height: 150px;
     width: 130px;
     background-color: #553066;
     border-radius: 7px;
@@ -19,14 +20,24 @@
 .book-ap2{
     text-align: center;
     color: white;
-    background-color: #553066;
+    background-color: #8f5ba7;
     padding: 0.1em;
     /* padding-bottom: 0.1em; */
-    border: 1px solid #FFF;
+    /* border: 1px solid #FFF; */
     width: 70%;
-    border-radius:20px;
+    border-radius:5px;
     cursor: pointer;
     margin-left: 18px;
-    
-    
+}
+/* 
+.book-ap2:hover {
+    background-color: #3b1c49;
+} */
+
+/* .book-ap2:active {
+    background-color: yellow;
+} */
+
+.book-ap2:active {     
+    background-color:#3b1c49;    
 }

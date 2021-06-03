@@ -3,8 +3,21 @@ import { Button, TextField, Grid, Typography, Container, Paper } from '@material
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { Assignment, Phone, PhoneDisabled } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
-
 import { SocketContext } from '../Context';
+import { createMuiTheme, ThemeProvider } from "@material-ui/core";
+
+
+const theme = createMuiTheme({
+  palette: {
+     primary: {
+        main: "#553066" // This is an orange looking color
+               },
+     secondary: {
+        main: "#d81b60" //Another orange-ish color
+                }
+           },
+ // as an aside, highly recommend importing roboto font for Material UI projects! Looks really nice
+});
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,7 +55,9 @@ const Sidebar = ({ children }) => {
   const [idToCall, setIdToCall] = useState('');
   const classes = useStyles();
 
+  
   return (
+    <ThemeProvider theme={theme}>
     <Container className={classes.container}>
       <Paper elevation={10} className={classes.paper}>
         <form className={classes.root} noValidate autoComplete="off">
@@ -74,6 +89,7 @@ const Sidebar = ({ children }) => {
         {children}
       </Paper>
     </Container>
+    </ThemeProvider>
   );
 };
 

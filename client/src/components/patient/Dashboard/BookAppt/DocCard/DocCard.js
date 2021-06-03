@@ -9,7 +9,7 @@ function DocCard(props){
     return(
         <div class="available_card_book">
             <div class={className}>
-                <p style={{padding: "0"}}>{props.id}</p>
+                <p style={{padding: "0", marginTop: "15px"}}>{props.id}</p>
                 
                 <p style={{padding: "0"}}>{props.name}</p>
                 

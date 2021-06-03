@@ -93,9 +93,10 @@ body{
     'map map map graph graph graph'; */
     grid-template-columns: 1fr 1fr;
     /* grid-template-rows: 1fr 1fr; */
-    grid-gap:30px;
+    grid-row-gap:15px;
+    grid-column-gap: 20px;
     background-color: #14001E;
-    padding: 1em;
+    padding: 0.5em;
     margin-left: 100px;
 }
 

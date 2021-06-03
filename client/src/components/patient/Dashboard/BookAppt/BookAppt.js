@@ -22,12 +22,9 @@ function BookAppt(){
     const [time,setTime]=useState("")
     const [doctor,setDoctor]=useState("")
     const [notif,setNotify]=useState({isOpen:false,message:'',type:''})
-    useEffect(()=>{
-        axios.post('http://localhost:5000/auth/getDoctors',{illness:illness,date:date,time:time})
-        .then((res)=>{
-            console.log(res.data.result);
-            getDoctor([...res.data.result]);
-        })
+    useEffect(async()=>{
+        let res=await axios.post('http://localhost:5000/auth/getDoctors',{illness:illness,date:date,time:time});
+        getDoctor([...res.data.result]);
     },[illness,date,time])
     function bookAppt(){
         var min = 100;
@@ -70,7 +67,7 @@ function BookAppt(){
                         <p style = {{marginBottom:"20px"}}><b>Book Your Appointment</b></p>
                         <div class="dropTHEbox">
                             <div class="Illness drop">
-                                <span class="purpletext">Type of Illness</span>
+                                <span class="purpletext">Department</span>
                                 <select name="illness" id="illdrop" onChange={(event)=>{setIllness(event.target.value)}}>  
                                     <option value="Respiratory">Respiratory</option>
                                     <option value="Cardiac">Cardiac</option>
@@ -101,7 +98,7 @@ function BookAppt(){
                             <div class="book-ap" onClick={bookAppt}>Book</div> 
                         </div>
                     </div>
-                    <div class="cont-book c2">
+                    {/* <div class="cont-book c2">
                         <p><b>Seek Specialist Help, Our Doctors</b></p>
                         <div class = "doc_grid_spec">
                             <div class="spec-doc d1"></div>
@@ -114,7 +111,7 @@ function BookAppt(){
                             <div class="spec-doc d8"></div>
                             <div class="spec-doc d9"></div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
                 </div>
                 

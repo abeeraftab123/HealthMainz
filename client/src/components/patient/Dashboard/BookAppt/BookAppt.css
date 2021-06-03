@@ -79,7 +79,7 @@ body{
 .containerBook {
     background-color: #14001E;
     display: grid;
-    grid-template-columns: 830px 525px;
+    grid-template-columns: 1340px;
     padding: 1em;
     grid-gap: 2em;
     padding-left: 0px;
@@ -165,7 +165,7 @@ body{
 }
 
 .doctor_available_book{
-    padding: 1em;
+    /* padding: 1em; */
     display: flex;
     flex-direction: row;
 }

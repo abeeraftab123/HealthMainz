@@ -64,19 +64,20 @@ function Report({location}){
             <div className="chat_rep_outerContainer">
                 <div className="chat_rep_container">
                     <div className="rep_con">
-                        <div className="infoBar_rep"><h1>Appointment Report</h1></div>
+                        <div className="infoBar_rep"><h4>Appointment Report</h4></div>
                             <div className="new_rep">
                                 <p><b>Appointment ID:</b> {ID}</p>
                                 <p><b>Appointment Time:</b> {time}</p>
-                                <p><b>Appointment Date:</b> {date}</p><br></br>
+                                <p><b>Appointment Date:</b> {date}</p>
                                 <p><b>Patient Name:</b> {patient}</p>
-                                <p><b>Doctor Name:</b> {doctor}</p><br></br>
+                                <p><b>Doctor Name:</b> {doctor}</p>
                                 <p><b>Medicines:</b></p>
+                                
                                 <table>
                                     <tr>
-                                        <td>Medicines name</td>
-                                        <td>Dosage</td>
-                                        <td onClick={addRow}>Add Row</td>
+                                        <td><b>Medicines name</b></td>
+                                        <td><b>Dosage</b></td>
+                                        <td style={{backgroundColor:'#5e337a', color:'#FFF', cursor: 'pointer'}} onClick={addRow}>Add Row</td>
                                     </tr>
                                     {meds.map((med)=>
                                     med.name&&med.dose?
@@ -86,14 +87,16 @@ function Report({location}){
                                         </tr>
                                         :
                                         <tr>
-                                            <td><input type="text" placeholder="Enter medicine name" onChange={(event)=>{setName(event.target.value)}}></input></td>
-                                            <td><input type="text" placeholder="Enter medicine dose" onChange={(event)=>{setDose(event.target.value)}}></input></td>
-                                            <td><button onClick={addMed} >Enter</button></td>
+                                            <td><input type="text" placeholder="Enter medicine name" style={{border: 'none', textAlign: 'center'}} onChange={(event)=>{setName(event.target.value)}}></input></td>
+                                            <td><input type="text" placeholder="Enter medicine dose" style={{border: 'none', textAlign: 'center'}} onChange={(event)=>{setDose(event.target.value)}}></input></td>
+                                            <td style={{backgroundColor:'#5e337a', color:'#FFF', cursor: 'pointer'}} onClick={addMed}>
+                                                Enter
+                                            </td>
                                         </tr>
                                     )}
-                                </table>
-                                <p><b>Enter Feedback</b></p>
-                                <textarea rows="5" cols="70" className="rep-box"  placeholder="Enter Feedback" onChange={(event)=>setFeedback(event.target.value)}></textarea>
+                                </table><br></br>
+                                
+                                <textarea rows="5" cols="100" className="rep-box"  placeholder="Enter Feedback" onChange={(event)=>setFeedback(event.target.value)}></textarea>
                                 <div className="gen-rep-but-beauty"><div className="gen-rep-but" onClick={sendReport}>Generate Report</div></div>
                                 
                                 
