@@ -3,13 +3,10 @@ import NavBar from "../../NavBar/NavBar"
 import { LOGOUT } from "../../../constants/actionTypes";
 import { useDispatch } from 'react-redux';
 import {useHistory} from 'react-router-dom';
-import Notification from "../../Notifications/Notification"
 import ReportCard from "../../patient/Dashboard/PatReport/ReportCard/ReportCard"
 import ReportDetails from "../../patient/Dashboard/PatReport/ReportDetails/ReportDetails"
 import "./AdmReport.css"
 function AdmReport(){
-    
-    const [notif,setNotify]=useState({isOpen:false,message:'',type:''})
     const dispatch = useDispatch();
     const history = useHistory();
     const user = JSON.parse(localStorage.getItem('admin'));
@@ -60,7 +57,6 @@ function AdmReport(){
                         </div>
                     </div>
                     <div class="contpat c2">
-                    <Notification notif={notif} ></Notification>
                         <p style = {{marginBottom:"20px"}}><b>Appointment Report</b></p>
                         <ReportDetails  details={details}/>
                        

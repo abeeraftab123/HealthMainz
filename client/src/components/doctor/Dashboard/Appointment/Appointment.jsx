@@ -2,7 +2,6 @@ import React,{useState} from 'react'
 import "./appointment.css";
 import Notification from "../../../Notifications/Notification"
 import { useHistory } from 'react-router-dom';
-import {Link} from 'react-router-dom'
 
 export default function AppointmentCard(props) {
     const history = useHistory();

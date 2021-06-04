@@ -1,11 +1,9 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState} from 'react'
 import axios from 'axios'
 import MapPic from "mapmyindia-react";
 import "./Map.css"
 function Map(){
-    const[stores,addStores]=useState([]);
     const [address,setAddress]=useState("");
-    const [coord,setCoords]=useState([]);
     const [markers,setMarkers]=useState([]);
     const [show,setShow]=useState(false)
     let m=[];

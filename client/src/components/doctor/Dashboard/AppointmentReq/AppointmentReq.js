@@ -1,6 +1,5 @@
 import React,{useEffect,useState} from 'react'
 import NavBar from "../../../NavBar/NavBar"
-import Notification from "../../../Notifications/Notification"
 import "./AppointmentReq.css"
 import { LOGOUT } from "../../../../constants/actionTypes";
 import { useDispatch } from 'react-redux';
