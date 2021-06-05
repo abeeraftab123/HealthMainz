@@ -281,7 +281,7 @@ app.post("/getDoctors",async (req,res)=>{
         //     res.json({result:ans});
         // })
         const doctor= await Doctor.find({Dept_No:dept})
-        const allAppt= await Appointment.find({completed:false,illness:dept})
+        const allAppt= await Appointment.find({completed:false,illness:dept,approved:true})
         doctor.forEach((doc)=>{
             const appt=allAppt.filter(appt=>appt.doc_id==doc.Doc_ID)
             if(appt.length===0)

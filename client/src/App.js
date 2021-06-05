@@ -28,7 +28,7 @@ const App = () =>{
             <Route path="/chat" component={Chat} />
 
             <Route path="/patient/register" component={Register} />
-            <Route path="/patient/login" component={Login} />
+            <Route path="/" exact component={Login} />
             <Route path="/dashboard" component={Dashboard} />
             <Route path="/patient/bookAppt" component={BookAppt} />
             <Route path="/patient/profile" component={PatProfile} />

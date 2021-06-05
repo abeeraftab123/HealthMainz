@@ -94,7 +94,7 @@ const Register=()=>{
       })
   };
     const login=()=>{
-      history.push("/patient/login")
+      history.push("/")
   }
   const register=()=>{
       history.push("/patient/register")
