@@ -1,23 +1,18 @@
 import React,{useState} from "react"
 import "./Detail.css"
 import Notification from "../../../../Notifications/Notification"
-import Loader from "../../../../Loader/Loader"
 function Detail(props){
     const axios=require('axios');
     let id=props.detail.id;
     let pid=props.detail.pid;
     const [notif,setNotify]=useState({isOpen:false,message:'',type:''})
-    const[loading,setLoading]=useState(false);
     function confirm(){
-        setLoading(true);
         axios.post('http://localhost:5000/auth/confirmAppt',{id:id,pid:pid})
         .then((res)=>{
-            setLoading(false)
+            setNotify({isOpen:true,message:'Appointment confirmed',type:'success'})
         })
-        setNotify({isOpen:true,message:'Appointment confirmed',type:'success'})
-
     }
-    return(loading?<Loader />:
+    return(
         <div>
             <Notification notif={notif} ></Notification>
             {props.detail.show?
