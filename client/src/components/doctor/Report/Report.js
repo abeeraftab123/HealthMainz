@@ -3,6 +3,7 @@ import NavBar from "../../NavBar/NavBar"
 import queryString from 'query-string'
 import Notification from "../../Notifications/Notification"
 import { useHistory } from 'react-router-dom';
+import Loader from "../../Loader/Loader"
 import './Report.css'
 function Report({location}){
     const history = useHistory();
@@ -18,6 +19,7 @@ function Report({location}){
     const[medName,setName]=useState('')
     const[dose,setDose]=useState('')
     const[medicines,addMedicines]=useState([])
+    const[loading,setLoading]=useState(false)
     useEffect(()=>{
         axios.post("http://localhost:5000/auth/docReport",{id:ID})
         .then((res)=>{
@@ -30,6 +32,7 @@ function Report({location}){
     },[])
 
     function sendReport(){
+        setLoading(true);
         let data={
             Appt_ID:ID,
             Doc_Name:doctor,
@@ -41,8 +44,8 @@ function Report({location}){
         }
         axios.post("http://localhost:5000/auth/createReport",{data:data})
         .then((res)=>{
-            setNotify({isOpen:true,message:"Report genearted",type:'success'})
-            history.push("/doctor/dashboard")
+            setLoading(false);
+            setNotify({isOpen:true,message:"report generated!",type:"success"})
         })
     }
 
@@ -60,7 +63,9 @@ function Report({location}){
         <>
             <NavBar user="doctor"></NavBar>
             <Notification notif={notif} ></Notification>
+            
             <div className="chat_rep_outerContainer">
+            {loading?<Loader />:
                 <div className="chat_rep_container">
                     <div className="rep_con">
                         <div className="infoBar_rep"><h4>Appointment Report</h4></div>
@@ -98,11 +103,12 @@ function Report({location}){
                                 <textarea rows="5" cols="100" className="rep-box"  placeholder="Enter Feedback" onChange={(event)=>setFeedback(event.target.value)}></textarea>
                                 <div className="gen-rep-but-beauty"><div className="gen-rep-but" onClick={sendReport}>Generate Report</div></div>
                                 
-                                
                             </div>
                     </div>
                 </div>
+            }
             </div>
+           
         </>
     )
 }
