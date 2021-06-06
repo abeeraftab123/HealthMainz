@@ -1,15 +1,18 @@
 import React,{useState} from 'react'
 import axios from 'axios'
 import MapPic from "mapmyindia-react";
+import Loader from "../Loader/Loader"
 import "./Map.css"
 function Map(){
     const [address,setAddress]=useState("");
     const [markers,setMarkers]=useState([]);
     const [show,setShow]=useState(false)
+    const[loading,showLoading]=useState(false);
     let m=[];
     async function map(){ 
+      showLoading(true);
       const headers = {
-        'Authorization': 'bearer a00f493b-d952-4331-a2bb-1faca021cca2',
+        'Authorization': 'bearer a8d7ecc5-bfd0-4bbb-86e0-ab23e2f5923d',
         'Access-Control-Allow-Origin':'*'
       };
       const url1=`https://peaceful-oasis-36229.herokuapp.com/https://atlas.mapmyindia.com/api/places/geocode?address=${address}&itemCount=1`;
@@ -34,6 +37,7 @@ function Map(){
       });
       setMarkers([...m])
       setShow(true)
+      showLoading(false);
 
       
     }
@@ -42,14 +46,18 @@ function Map(){
   
     return(
         <div className="map">
+        
           <div id="addSearch"> 
         <input id="searchBox" placeholder="Enter address" onChange={(event)=>{setAddress(event.target.value)}}></input>
         <div class="seachIcon" onClick={map}><i class="fas fa-search"></i></div>
         </div>
         <div className="mapBox">
-        {show?<MapPic markers={markers}/>:<img src="https://www.mapmyindia.com/api/img/demo1.png" style={{width:"100%",height:"100%"}} />}
+        {loading?<Loader />:
+      show?<MapPic markers={markers}/>:<img src="https://www.mapmyindia.com/api/img/demo1.png" style={{width:"100%",height:"100%"}} />
+        }
                 
       </div>
+
         </div>
         
     );

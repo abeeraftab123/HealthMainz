@@ -268,20 +268,12 @@ app.post("/admin/login",(req,res)=>{
 
 app.post("/getDoctors",async (req,res)=>{
     let ans=[];
-    console.log(req.body)
     const dept=req.body.illness
     const time=req.body.time
     const date=req.body.date
     if(time!==""&&date!=""){
-        // Doctor.find({Dept_No:dept},(err,results)=>{
-        //     if(err) console.log(err)
-        //     results.forEach(r=>{
-        //         ans.push(r);
-        //     })
-        //     res.json({result:ans});
-        // })
         const doctor= await Doctor.find({Dept_No:dept})
-        const allAppt= await Appointment.find({completed:false,illness:dept,approved:true})
+        const allAppt= await Appointment.find({completed:false,approved:true})
         doctor.forEach((doc)=>{
             const appt=allAppt.filter(appt=>appt.doc_id==doc.Doc_ID)
             if(appt.length===0)
@@ -301,7 +293,6 @@ app.post("/getDoctors",async (req,res)=>{
                                 flag=1;
                             }
                         })
-                        console.log(flag)
                         if(flag===0)
                         ans.push(doc)
                 }
@@ -350,11 +341,10 @@ app.get("/getAppt",(req,res)=>{
 
 })
 
-app.post('/confirmAppt',(req,res)=>{
+app.post('/confirmAppt',async (req,res)=>{
     const id=(req.body.id);
-    Appointment.updateOne({Appt_ID:id},[{$set:{approved:true}}],(err,result)=>{
-        if(err) console.log(err)
-      })
+    await Appointment.updateOne({Appt_ID:id},[{$set:{approved:true}}])
+
 
       Patient.findOne({pat_ID:req.body.pid},(err,pat)=>{
         let mail=pat.Email_ID

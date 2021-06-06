@@ -6,6 +6,7 @@ import Notification from "../../../Notifications/Notification"
 import { LOGOUT } from "../../../../constants/actionTypes";
 import { useDispatch } from 'react-redux';
 import {useHistory} from 'react-router-dom';
+import Loader from "../../../Loader/Loader"
 function BookAppt(){
     const axios=require('axios')
     const dispatch = useDispatch();
@@ -22,9 +23,14 @@ function BookAppt(){
     const [time,setTime]=useState("")
     const [doctor,setDoctor]=useState("")
     const [notif,setNotify]=useState({isOpen:false,message:'',type:''})
+    const[loading,setLoading]=useState(false);
     useEffect(async()=>{
+        setLoading(true);
         let res=await axios.post('http://localhost:5000/auth/getDoctors',{illness:illness,date:date,time:time});
-        getDoctor([...res.data.result]);
+        if(res){
+            getDoctor([...res.data.result]);
+            setLoading(false);
+        }
     },[illness,date,time])
     function bookAppt(){
         var min = 100;
@@ -91,7 +97,9 @@ function BookAppt(){
                         </div>
                         <span style={{marginLeft: "15px", marginBottom: "-15px"}} class="purpletext">Doctors Available (for the given date and time)</span>
                         <div class="doctor_available_book">
-                            {doctors.map((doctor,index)=><DocCard id={doctor.Doc_ID} name={doctor.Doc_Name} index={index} callback={callBackFunction}></DocCard>)}
+                        {loading?<Loader />:
+                            doctors.map((doctor,index)=><DocCard id={doctor.Doc_ID} name={doctor.Doc_Name} index={index} callback={callBackFunction}></DocCard>)
+                        }
                         </div>
                         <p id="notice">*Fill all the fields before proceeding further</p>
                         <div class="book-beauty">
